@@ -11,28 +11,23 @@ export const navItems = [
   {
     id: 1,
     label: "Home",
-    href: "#home",
+    href: "/",
   },
   {
     id: 2,
-    label: "Courses",
-    href: "#courses",
+    label: "About Us",
+    href: "/about",
   },
   {
     id: 3,
-    label: "About Us",
-    href: "#about",
+    label: "Services",
+    href: "/services",
   },
-  {
-    id: 4,
-    label: "Pricing",
-    href: "#pricing",
-  },
-  {
-    id: 5,
-    label: "Contact",
-    href: "#contact",
-  },
+  // {
+  //   id: 3,
+  //   label: "Billing Services",
+  //   href: "/billing-services",
+  // },
 ];
 
 export const heroLogos = [
@@ -77,38 +72,20 @@ export const benefitItems = [
   {
     id: 1,
     icon: "/images/icon-1.png",
-    title: "Flexible Learning Schedule",
-    text: "Fit your coursework around your existing commitments and obligations.",
+    title: "Accounts Receivables",
+    text: "With professional accounts receivables management, QREV assists you in reaching your financial objectives.",
   },
   {
     id: 2,
     icon: "/images/icon-2.png",
-    title: "Expert Instruction",
-    text: "Learn from industry experts who have hands-on experience in design and development.",
+    title: "Customer Care",
+    text: "From our own experience, we have learned that knowledgeable, friendly call center service can improve the customer perception for any companyt.",
   },
   {
     id: 3,
     icon: "/images/icon-3.png",
-    title: "Diverse Course Offerings",
-    text: "Explore a wide range of design and development courses covering various topics.",
-  },
-  {
-    id: 4,
-    icon: "/images/icon-4.png",
-    title: "Updated Curriculum",
-    text: "Access courses with up-to-date content reflecting the latest trends and industry practices.",
-  },
-  {
-    id: 5,
-    icon: "/images/icon-5.png",
-    title: "Practical Projects and Assignments",
-    text: "Develop a portfolio showcasing your skills and abilities to potential employers.",
-  },
-  {
-    id: 6,
-    icon: "/images/icon-6.png",
-    title: "Interactive Learning Environment",
-    text: "Collaborate with fellow learners, exchanging ideas and feedback to enhance your understanding.",
+    title: "What we do!",
+    text: "Customer Service/Consulting,Help Desk, Order Acceptance, Additional Sales (Cross- & Upsell), Complaints Management, Service for Retail Partner.",
   },
 ];
 
@@ -117,50 +94,294 @@ export const coursesSecItems = [
     id: 1,
     img: "/images/course-img-1.png",
     title: "Web Design Fundamentals",
-    text: "Learn the fundamentals of web design, including HTML, CSS, and responsive design principles. Develop the skills to create visually appealing and user-friendly websites.",
-    instructor: "By John Smith",
+    text: "Transform your sales and business development with QREV Business Solutions. Align your organization, optimize operations, and foster a winning culture.",
+    instructor: "Sales & Business Development",
     tags: [{ tag: "4 Weeks" }, { tag: "Beginner" }],
   },
   {
     id: 2,
     img: "/images/course-img-2.png",
     title: "Mobile App Development",
-    text: "Dive into the world of mobile app development. Learn to build native iOS and Android applications using industry-leading frameworks like Swift and Kotlin.",
-    instructor: "By David Brown",
+    text: "A business transformation that involves aligning organizational structures, operations and culture with your organization’s mission, vision, strategy and values. QREV Business Solutions supports you at all levels.",
+    instructor: "Operational Efficiency Boosting",
     tags: [{ tag: "8 Weeks" }, { tag: "Intermediate" }],
   },
   {
     id: 3,
     img: "/images/course-img-3.png",
     title: "Front-End Web Development",
-    text: "Become proficient in front-end web development. Learn HTML, CSS, JavaScript, and popular frameworks like Bootstrap and React. Build interactive and responsive websites.",
-    instructor: "By Michael Adams",
+    text: "Clearly defining processes, managing them well and adjusting them systematically leads to sustainable performance improvement. QREV Business Solutions guides you and provides training.",
+    instructor: "Administrative Services",
     tags: [{ tag: "10 Weeks" }, { tag: "Intermediate" }],
+  },
+];
+
+/*-------------------------Services Items-----------------------------------*/
+import rcmImage1 from "../../public/images/course-img-1.png";
+export const rcmServices = [
+  {
+    id: 1,
+    title: "Revenue Cycle Management Services",
+    img: rcmImage1,
+    description:
+      "Manage your administrative tasks, minimize errors, and improve your bottom line with our proficient healthcare revenue cycle management services.",
+  },
+];
+
+export const rcmServicesDetails = [
+  {
+    id: 1,
+    categoryId: 1,
+    title: "Medical Billing Services",
+    description:
+      "Leverage advanced billing tools and software to minimize billing time and enhance billing accuracy with our proficient medical billing services.",
+  },
+  {
+    id: 2,
+    categoryId: 1,
+    title: "Medical Coding Services",
+    description:
+      "Accelerate claims processing, minimize claims denials, and increase reimbursements with our quick, accurate, and compliant medical coding services.",
+  },
+  {
+    id: 3,
+    categoryId: 1,
+    title: "Insurance Eligibility Verification Services",
+    description:
+      "Confirm patient coverage in real time, prevent claim denials, and keep reimbursements on schedule with our accurate insurance-eligibility verification services.",
   },
   {
     id: 4,
-    img: "/images/course-img-4.png",
-    title: "UI/UX Design",
-    text: "Master the art of creating intuitive user interfaces (UI) and enhancing user experiences (UX). Learn design principles, wireframing, prototyping, and usability testing techniques.",
-    instructor: "By John Smith",
-    tags: [{ tag: "6 Weeks" }, { tag: "Intermediate" }],
+    categoryId: 1,
+    title: "Medical Accounts Receivable Services",
+    description:
+      "Ensures efficient claims processing, accurate billing, and swift follow-up, resulting in maximized reimbursements.",
   },
   {
     id: 5,
-    img: "/images/course-img-5.png",
-    title: "Graphic Design for Beginners",
-    text: "Discover the fundamentals of graphic design, including typography, color theory, layout design, and image manipulation techniques. Create visually stunning designs for print and digital media.",
-    instructor: "By Sarah Thompson",
-    tags: [{ tag: "10 Weeks" }, { tag: "Beginner" }],
+    categoryId: 1,
+    title: "Medical Data Entry Services",
+    description:
+      "Our expert team ensures meticulous entry and organization of patient records while maintaining data integrity.",
   },
   {
     id: 6,
-    img: "/images/course-img-6.png",
-    title: "Advanced JavaScript",
-    text: "Take your JavaScript skills to the next level. Explore advanced concepts like closures, prototypes, asynchronous programming, and ES6 features. Build complex applications with confidence.",
-    instructor: "By Jennifer Wilson",
-    tags: [{ tag: "6 Weeks" }, { tag: "Advance" }],
+    categoryId: 1,
+    title: "Healthcare Back Office Support Services",
+    description:
+      "Our trained agents offer compassionate support, appointment scheduling, and information dissemination.",
   },
+  {
+    id: 7,
+    categoryId: 1,
+    title: "EMR Data Entry Services",
+    description:
+      "Our accurate data entry ensures that critical patient information is readily accessible, enabling efficient care delivery and informed decision-making.",
+  },
+];
+
+/*---------------------Software Business Development------------------------*/
+export const softwarebusiness = [
+  {
+    id: 2,
+    title: "Business Development Services",
+    img: rcmImage1,
+    description:
+      "Manage your administrative tasks, minimize errors, and improve your bottom line with our proficient healthcare revenue cycle management services.",
+  },
+];
+
+export const softwarebusinessDetails = [
+  {
+    id: 2,
+    categoryId: 2,
+    title: "Comprehensive Action Plan",
+    description:
+      "We help to design a custom plan for ensuring future success by setting goals, unique value proposition, targeting specific clients, creating market strategies, developing an implementation plan, budget, and a method to measure the effectiveness.",
+  },
+  {
+    id: 2,
+    categoryId: 2,
+    title: "Lead Generation",
+    description:
+      "Discover and analyse the characteristics of the ideal client. Identify how and where to connect with the ideal client. Qualify and prioritise the ideal lead sources, and develop a follow-up system.",
+  },
+  {
+    id: 2,
+    categoryId: 2,
+    title: "Better Networking",
+    description:
+      "Increase the radius of influencers by leveraging the current network, build the perfect client network, and participate in the best professional organisations. Discover the best methods and networking opportunities now.",
+  },
+  {
+    id: 2,
+    categoryId: 2,
+    title: "Growth Assessment",
+    description:
+      "Evaluate the company’s growth with respect to the competitors and key influencers to identify strengths, weaknesses, opportunities, and threats. Based on the findings, detailed recommendations and suggestions will be developed, along with an action plan, to achieve goals and assist in implementation.",
+  },
+  {
+    id: 2,
+    categoryId: 2,
+    title: "Skilled Professionals",
+    description:
+      "Our team of business development leaders will engage with your prospects, build rapport, and effectively convert them into customers. With our extended team, you can be confident that every lead has the best chance of becoming your client.",
+  },
+  {
+    id: 2,
+    categoryId: 2,
+    title: "Nurtured Relationships",
+    description:
+      "Proven and scalable multi-channel prospecting to targeted audiences using email and social media prospecting that helps to onboard hot leads and nurtures relationships throughout the sales journey.",
+  },
+];
+
+/*----------------------Software Solutions Services---------------------*/
+export const softwareSolutions = [
+  {
+    id: 3,
+    title: "Software Solutions",
+    img: rcmImage1,
+    description:
+      "Manage your administrative tasks, minimize errors, and improve your bottom line with our proficient healthcare revenue cycle management services.",
+  },
+];
+
+export const softwareSolutionsDetails = [
+  {
+    id: 3,
+    categoryId: 3,
+    title: "Mobile Application Development Services",
+    description:
+      "Conceptualize, design, and implement intuitive mobile applications adapted to your specific business needs. Enhance user engagement and drive business growth across various mobile platforms.",
+  },
+  {
+    id: 3,
+    categoryId: 3,
+    title: "Software Development Services",
+    description:
+      "Robust, scalable, and secure software solutions tailored to any OS, browser, and device. We leverage our industry knowledge to create bespoke solutions that seamlessly integrate across platforms and devices.",
+  },
+  {
+    id: 3,
+    categoryId: 3,
+    title: "Enterprise Software Development",
+    description:
+      "Design and develop comprehensive enterprise applications with clear ROI estimations for financial transparency. We create scalable, efficient, and adaptable systems using methods like point-to-point connections, event-driven frameworks, and microservices.",
+  },
+  {
+    id: 3,
+    categoryId: 3,
+    title: "Software Testing Services",
+    description:
+      "Ensure software reliability and performance with our software testing services. We have specialized testing protocols, including functional, performance, compatibility, and security assessments, ensuring a smooth and user-friendly experience.",
+  },
+  {
+    id: 3,
+    categoryId: 3,
+    title: "Automation Services",
+    description:
+      "We analyze your business processes, identify potential bottlenecks, and optimize for efficiency. We help reduce software implementation time and use low-code development tools where suitable to hasten automation and cut costs.",
+  },
+  {
+    id: 3,
+    categoryId: 3,
+    title: "Cloud Services",
+    description:
+      "Cloud solutions that enhance agility, scalability, and security. Our professional cloud architects recommend the most suitable cloud provider and deployment strategy, guiding you on the ideal IaaS, PaaS, or SaaS services.",
+  },
+  {
+    id: 3,
+    categoryId: 3,
+    title: "IT Infrastructure Management",
+    description:
+      "Comprehensive IT infrastructure management to ensure optimal performance, security, and alignment with business goals. We offer flexible solutions that integrate seamlessly with your in-house team.",
+  },
+  {
+    id: 3,
+    categoryId: 3,
+    title: "IT Staffing Services",
+    description:
+      "Skilled IT professionals who can augment your team and ensure you get the right talent to meet your specific project demands and drive innovation.",
+  },
+  {
+    id: 3,
+    categoryId: 3,
+    title: "Database Consulting Service",
+    description:
+      "Efficient management of customer profiles, contacts, and related documents. We also provide guidance on database solutions for member tracking, fee management, event coordination, and volunteer recruitment.",
+  },
+  {
+    id: 3,
+    categoryId: 3,
+    title: "Virtual Global Capability Center",
+    description:
+      "Dedicated Virtual Centres that empower you to manage global operations, optimize overheads, enhance productivity, and drive ongoing innovation across diverse international markets.",
+  },
+];
+
+/*----------------------- Database Services --------------------------*/
+export const databaseServices = [
+  {
+    id: 4,
+    title: "Database Services",
+    img: rcmImage1,
+    description: "",
+  },
+];
+
+export const databaseServicesDetails = [
+  {
+    id: 4,
+    categoryId: 4,
+    title: "",
+    description: "",
+  },
+  {
+    id: 4,
+    categoryId: 4,
+    title: "",
+    description: "",
+  },
+  {
+    id: 4,
+    categoryId: 4,
+    title: "",
+    description: "",
+  },
+];
+
+/*------------------------------Client Logo -----------------------------*/
+import Client1 from "../images/logo/logo.png";
+import Client2 from "../images/sponser/spo1.webp";
+import Client3 from "../images/sponser/spo2.webp";
+import Client4 from "../images/sponser/spo3.webp";
+
+export const clientLogo = [
+  {
+    id: 1,
+    image: Client1,
+  },
+  {
+    id: 2,
+    image: Client2,
+  },
+  {
+    id: 3,
+    image: Client3,
+  },
+  {
+    id: 4,
+    image: Client4,
+  },
+  // {
+  //   id: 5,
+  //   image: Client1,
+  // },
+  // {
+  //   id: 6,
+  //   image: Client1,
+  // },
 ];
 
 export const testimonialsItems = [
@@ -227,19 +448,20 @@ export const faqItems = [
 export const contactInfo = [
   {
     id: 1,
-    icon: RiPhoneFill,
-    label: "hello@skillbridge.com",
+    icon: RiMailSendFill,
+    label: "qrevbusinesspvtltd@gmail.com",
   },
   {
     id: 2,
-    icon: RiMailSendFill,
+    icon: RiPhoneFill,
+
     label: "+91 91813 23 2309",
   },
-  {
-    id: 3,
-    icon: RiUserLocationLine,
-    label: "Somewhere in the World",
-  },
+  // {
+  //   id: 3,
+  //   icon: RiUserLocationLine,
+  //   label: "Somewhere in the World",
+  // },
 ];
 
 export const footerLists = [

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Libertinus+Sans:ital,wght@0,400;0,700;1,400&display=swap");
+
 @import "tailwindcss";
 
 @theme {
@@ -10,15 +12,19 @@
   --color-orange-70: #ffbf66;
   --color-orange-75: #ffca80;
   --color-orange-97: #fff9f0;
-  --font-dmSans: "DM Sans", sans-serif;
+  --font-dmSans: "Libertinus Sans", sans-serif;
 }
 
+/* Navbar  */
 @layer base {
   html {
     @apply scroll-smooth;
   }
+  /* body {
+    @apply font-dmSans text-grey-15 bg-[#EEFAF9];
+  } */
   body {
-    @apply font-dmSans text-grey-15 bg-white-97;
+    @apply font-dmSans text-grey-15 bg-[#fff];
   }
 }
 
@@ -51,7 +57,7 @@
 
 @layer components {
   .primary-btn {
-    @apply bg-orange-50 text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-50/90 transition-colors;
+    @apply text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-50/90 transition-colors;
   }
   .secondary-btn {
     @apply px-8 py-4 bg-white border border-white-95 rounded-md hover:bg-orange-90 transition-colors;

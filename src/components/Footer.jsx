@@ -4,9 +4,12 @@ import { contactInfo, footerLists, socialIcons } from "../constant/data";
 import { motion } from "motion/react";
 import { fadeInUp, staggerContainer } from "../motion/animations";
 
+import Logo from "../images/logo/logo.png";
+
 const Footer = () => {
   return (
-    <footer className="bg-white pt-14 pb-8">
+    // <footer className="bg-white mt-10 py-8 pb-8">
+    <footer className="bg-[#EEFAF9] mt-10 py-8 pb-8">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -19,13 +22,13 @@ const Footer = () => {
           {/* Footer brand */}
           <motion.div variants={fadeInUp}>
             {/* logo */}
-            <div>
-              <img
-                src="/images/logo.png"
-                alt="footer logo"
-                width={150}
-                height={50}
-              />
+            <div className="flex items-center gap-2">
+              <a href="#">
+                <img src={Logo} alt="logo" width={30} height={30} />
+              </a>
+              <h6 className="text-[#2A998D] font-semibold">
+                Qrev Business Solutions
+              </h6>
             </div>
             {/* Links */}
             <div className="mt-8 space-y-4">
@@ -33,7 +36,7 @@ const Footer = () => {
                 <a
                   href="#"
                   key={item.id}
-                  className="flex items-center gap-1.5 hover:text-orange-50 hover:underline transition-colors"
+                  className="flex items-center gap-1.5 hover:text-[#2A998D]  hover:underline transition-colors"
                 >
                   {<item.icon />}
                   {item.label}
@@ -51,7 +54,7 @@ const Footer = () => {
                   <li key={index}>
                     <a
                       href="#"
-                      className="hover:underline transition hover:text-orange-50"
+                      className="hover:underline transition hover:text-[#2A998D]"
                     >
                       {link.label}
                     </a>
@@ -67,10 +70,10 @@ const Footer = () => {
             <div className="flex mt-5 gap-3">
               {socialIcons.map((icon) => (
                 <button
-                  className="secondary-btn p-3.5 hover:shadow-md bg-white-97 hover:bg-white-99 transition-all"
+                  className="p-3.5 hover:shadow-md bg-white-97 hover:bg-white-99 transition-all"
                   key={icon.id}
                 >
-                  <a href="#">{<icon.icon />}</a>
+                  <a href="#">{<icon.icon className="text-[#2A998D]" />}</a>
                 </button>
               ))}
             </div>
@@ -78,7 +81,8 @@ const Footer = () => {
         </div>
         {/* Footer bottom */}
         <motion.p variants={fadeInUp} className="mt-16 text-center lg:mt-20">
-          &copy; {new Date().getFullYear()} Skillbridge. All rights reserved.
+          &copy; {new Date().getFullYear()} Qrev Business Solutions Pvt Ltd. All
+          rights reserved.
         </motion.p>
       </motion.div>
     </footer>

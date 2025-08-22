@@ -11,7 +11,7 @@ import { fadeIn, fadeInUp, staggerContainer } from "../motion/animations";
 
 const Testimonials = () => {
   return (
-    <section className="section">
+    <section className="mt-5">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -20,13 +20,20 @@ const Testimonials = () => {
         className="container"
       >
         {/* Title */}
-        <Title
-          text={
-            "Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam eget elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac cum eget habitasse in velit fringilla feugiat senectus in."
-          }
-          title="Our Testimonials"
-          link={"View All"}
-        />
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          {/* Left Section */}
+
+          <div className="max-w-3xl mx-auto text-center space-y-4">
+            <h2 className="text-[#2A998D] text-2xl md:text-4xl font-extrabold">
+              Our Client Reviews
+            </h2>
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+              Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam
+              eget elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac
+              cum eget habitasse in velit fringilla feugiat senectus in.
+            </p>
+          </div>
+        </div>
 
         {/* Card wrapper */}
         <motion.div variants={fadeIn}>
@@ -58,27 +65,20 @@ const Testimonials = () => {
           >
             {testimonialsItems.map((item) => (
               // Card
+              // <SwiperSlide
+              //   className="bg-white border border-white-95 p-8 lg:p-10 rounded-[10px] space-y-3"
+              //   key={item.id}
+              // >
               <SwiperSlide
-                className="bg-white border border-white-95 p-8 lg:p-10 rounded-[10px] space-y-3"
+                className="bg-[#EEFAF9] border border-white-95 p-8 lg:p-10 rounded-[10px] space-y-3"
                 key={item.id}
               >
                 <p>{item.text}</p>
-                <div className="flex items-center justify-between border-t border-t-orange-90 pt-4 flex-wrap gap-2">
+                <div className="flex items-center justify-between border-t border-t-green-90 pt-4 flex-wrap gap-2">
                   <div className="flex  items-center gap-3">
-                    {/* img */}
-                    <div>
-                      <img
-                        src={item.img}
-                        alt={item.author}
-                        width={50}
-                        height={50}
-                        className="rounded-lg"
-                      />
-                    </div>
                     {/* author */}
                     <p className="font-medium">{item.author}</p>
                   </div>
-                  <button className="secondary-btn">Read Full Story</button>
                 </div>
               </SwiperSlide>
             ))}
@@ -87,13 +87,13 @@ const Testimonials = () => {
         {/* navigation btns */}
         <motion.div
           variants={fadeInUp}
-          className="flex items-center justify-center mt-18 gap-5"
+          className="flex  items-center justify-center mt-10 gap-5"
         >
-          <button className="h-12 w-12 bg-orange-70 hover:bg-orange-75 transition-colors flex items-center justify-center rounded-xl active:bg-orange-75/80 prev-btn">
-            <RiArrowLeftLine size={30} />
+          <button className="h-12 w-12 bg-[#2A998D]  transition-colors flex items-center justify-center rounded-xl  prev-btn">
+            <RiArrowLeftLine size={20} className="text-white" />
           </button>
-          <button className="h-12 w-12 bg-orange-70 hover:bg-orange-75 transition-colors flex items-center justify-center rounded-xl active:bg-orange-75/80 next-btn">
-            <RiArrowRightLine size={30} />
+          <button className="h-12 w-12 bg-[#2A998D]   transition-colors flex items-center justify-center rounded-xl  next-btn">
+            <RiArrowRightLine size={20} className="text-white" />
           </button>
         </motion.div>
       </motion.div>

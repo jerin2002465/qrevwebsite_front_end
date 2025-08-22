@@ -1,6 +1,8 @@
 import { RiCloseLine, RiMenuLine } from "@remixicon/react";
 import React, { useState } from "react";
 import { navItems } from "../constant/data";
+import Logo from "../images/logo/logo.png";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,14 +10,52 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <header className="w-full py-5">
-      <div className="container flex items-center justify-between border-b border-white-95 pb-5">
+    // <header className="w-full py-5 bg-white">
+    <header className="w-full py-5 bg-[#EEFAF9]">
+      <div className="container flex items-center justify-between  pb-5">
         {/* Logo */}
-        <a href="#">
-          <img src="/images/logo.png" alt="logo" width={170} height={50} />
-        </a>
+        <Link to="/" className="flex items-center gap-2">
+          <img src={Logo} alt="logo" width={30} height={30} />
+          <h4 className="text-[#2A998D] font-extrabold">
+            Qrev Business Solutions
+          </h4>
+        </Link>
 
-        {/* Mobile menu */}
+        {/* ----------------------------lg Menu------------------------------- */}
+        <div className="max-lg:hidden flex items-center justify-center lg:gap-10">
+          <ul className="flex gap-10">
+            {navItems.map((item) => (
+              <li key={item.id}>
+                <NavLink
+                  to={item.href}
+                  className={({ isActive }) =>
+                    `font-medium text-lg border-b-2 transition-all duration-300 ${
+                      isActive
+                        ? "border-[#2A998D] text-[#2A998D]"
+                        : "border-transparent hover:border-[#2A998D]"
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+          {/* Lg login btns */}
+          <Link
+            to="/contact"
+            className="bg-[#29988E] px-5 py-1 rounded-2xl text-white"
+          >
+            Contact
+          </Link>
+        </div>
+
+        {/* Menu icon */}
+        <button className="lg:hidden" onClick={handleClick}>
+          <RiMenuLine size={30} />
+        </button>
+
+        {/*---------------------------- Mobile menu ---------------------------------*/}
         <nav className={`navbar ${isOpen ? "active" : ""}`}>
           {/* Close btn */}
           <button className="absolute top-8 right-8" onClick={handleClick}>
@@ -26,44 +66,31 @@ const Header = () => {
           <ul className="grid gap-5 mt-16 text-center">
             {navItems.map((item) => (
               <li key={item.id}>
-                <a
-                  href={item.href}
-                  className="text-lg font-medium hover:text-orange-50 transition-colors"
+                <NavLink
+                  to={item.href}
+                  className={({ isActive }) =>
+                    `text-lg font-medium transition-colors ${
+                      isActive
+                        ? "text-[#2A998D] border-b-2 border-[#2A998D]"
+                        : "hover:border-b-2 hover:border-[#2A998D]"
+                    }`
+                  }
+                  onClick={() => setIsOpen(false)} // close mobile menu on click
                 >
                   {item.label}
-                </a>
+                </NavLink>
               </li>
             ))}
           </ul>
 
           {/* login btns */}
-          <button className="primary-btn mt-12 mx-auto max-w-40 w-full">
-            login
-          </button>
+          <Link
+            to="/contact"
+            className="bg-[#2A998D] text-center rounded-2xl text-white mt-12 mx-auto max-w-40 w-full"
+          >
+            Contact
+          </Link>
         </nav>
-
-        {/* Menu icon */}
-        <button className="lg:hidden" onClick={handleClick}>
-          <RiMenuLine size={30} />
-        </button>
-
-        {/* lg Menu */}
-        <div className="max-lg:hidden flex items-center justify-center lg:gap-10">
-          <ul className="flex gap-10">
-            {navItems.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={item.href}
-                  className="font-medium text-lg hover:text-orange-50 transition-colors"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          {/* Lg login btns */}
-          <button className="primary-btn">login</button>
-        </div>
       </div>
     </header>
   );
