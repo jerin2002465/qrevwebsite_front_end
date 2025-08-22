@@ -56,14 +56,19 @@ const Header = () => {
         </button>
 
         {/*---------------------------- Mobile menu ---------------------------------*/}
-        <nav className={`navbar ${isOpen ? "active" : ""}`}>
-          {/* Close btn */}
-          <button className="absolute top-8 right-8" onClick={handleClick}>
+        <nav
+          className={` fixed top-0 right-0 h-full w-80 bg-white shadow-lg  transform transition-transform duration-300 ease-in-out z-50 ${
+            isOpen ? `translate-x-0` : `translate-x-full`
+          }`}
+        >
+          <button
+            className=" absolute top-6 left-8 bg-[#2A998D] text-white p-2 rounded-[50px]"
+            onClick={handleClick}
+          >
             <RiCloseLine size={30} />
           </button>
 
-          {/* List */}
-          <ul className="grid gap-5 mt-16 text-center">
+          <ul className="grid gap-5 mt-20 text-center">
             {navItems.map((item) => (
               <li key={item.id}>
                 <NavLink
@@ -83,10 +88,11 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* login btns */}
+          {/* Contact btn */}
           <Link
             to="/contact"
-            className="bg-[#2A998D] text-center rounded-2xl text-white mt-12 mx-auto max-w-40 w-full"
+            className="block bg-[#2A998D] text-center rounded-2xl text-white mt-10 mx-auto max-w-40 w-full py-2"
+            onClick={() => setIsOpen(false)}
           >
             Contact
           </Link>
