@@ -62,7 +62,7 @@ const Contact = () => {
         >
           <form
             onSubmit={handleSubmit}
-            className="max-w-md mx-auto bg-white  rounded-2xl shadow-lg p-8 space-y-6"
+            className="max-w-md mx-auto bg-white  rounded-2xl shadow-[0px_0px_4px_rgba(0,0,0,0.4)] p-8 space-y-6"
           >
             <h2 className="text-2xl font-bold  text-center">Contact Us</h2>
             <p className="text-gray-500 text-center text-sm mb-6">
