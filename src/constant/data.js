@@ -387,27 +387,23 @@ export const clientLogo = [
 export const testimonialsItems = [
   {
     id: 1,
-    text: "The web design course provided a solid foundation for me. The instructors were knowledgeable and supportive, and the interactive learning environment was engaging. I highly recommend it!",
-    author: "Sarah L",
-    img: "/images/testi-img-1.png",
+    text: "Working with QREV was a game-changer for our billing process. Their insights into revenue cycle management were sharp, and clear communication made everything seamless. We’re seeing faster payments and happier clients.",
+    author: "Dr. Priya N.",
   },
   {
     id: 2,
-    text: "The UI/UX design course exceeded my expectations. The instructor's expertise and practical assignments helped me improve my design skills. I feel more confident in my career now. Thank you!",
-    author: "Jason M",
-    img: "/images/testi-img-2.png",
+    text: "The business consulting support from QREV gave us a clear roadmap for growth. They tailored strategies uniquely to our needs, and the results speak for themselves. Our operational efficiency has never been this strong.",
+    author: "Ravi K.",
   },
   {
     id: 3,
-    text: "The mobile app development course was fantastic! The step-by-step tutorials and hands-on projects helped me grasp the concepts easily. I'm now building my own app. Great course!",
-    author: "Emily R",
-    img: "/images/testi-img-3.png",
+    text: "QREV’s approach to solving complex workflow challenges was both innovative and practical. Their reliability solutions helped us streamline tasks and build confidence across our team.",
+    author: "Anita S.",
   },
   {
     id: 4,
-    text: "I enrolled in the graphic design course as a beginner, and it was the perfect starting point. The instructor's guidance and feedback improved my design abilities significantly. I'm grateful for this course!",
-    author: "Michael K",
-    img: "/images/testi-img-4.png",
+    text: "Partnering with QREV transformed how we manage revenue. Their team brought professionalism, clarity, and real improvements to our financial performance. Highly recommend for any business ready to level up.",
+    author: "Sanjay M.",
   },
 ];
 

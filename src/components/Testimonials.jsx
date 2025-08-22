@@ -35,64 +35,65 @@ const Testimonials = () => {
           </div>
         </div>
 
-        {/* Card wrapper */}
         <motion.div variants={fadeIn}>
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={30}
             breakpoints={{
-              640: {
-                slidesPerView: 1,
-              },
-              768: {
-                slidesPerView: 1.5,
-              },
-              1280: {
-                slidesPerView: 2.5,
-              },
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 1.5 },
+              1280: { slidesPerView: 2.5 },
             }}
             autoplay={{
               delay: 3000,
               pauseOnMouseEnter: true,
               disableOnInteraction: false,
             }}
-            loop={true}
+            loop={false} // ❌ loop must be false for prev/next disabling
             navigation={{
               prevEl: ".prev-btn",
               nextEl: ".next-btn",
             }}
+            onInit={(swiper) => {
+              // disable prev on first load
+              const prevBtn = document.querySelector(".prev-btn");
+              const nextBtn = document.querySelector(".next-btn");
+
+              if (prevBtn) prevBtn.disabled = swiper.isBeginning;
+              if (nextBtn) nextBtn.disabled = swiper.isEnd;
+
+              // listen for slide changes
+              swiper.on("slideChange", () => {
+                if (prevBtn) prevBtn.disabled = swiper.isBeginning;
+                if (nextBtn) nextBtn.disabled = swiper.isEnd;
+              });
+            }}
             className="mt-14 lg:mt-16"
           >
             {testimonialsItems.map((item) => (
-              // Card
-              // <SwiperSlide
-              //   className="bg-white border border-white-95 p-8 lg:p-10 rounded-[10px] space-y-3"
-              //   key={item.id}
-              // >
               <SwiperSlide
-                className="bg-[#EEFAF9] border border-white-95 p-8 lg:p-10 rounded-[10px] space-y-3"
                 key={item.id}
+                className="bg-[#EEFAF9] border border-white-95 p-8 lg:p-10 rounded-[10px] 
+                   flex flex-col justify-between h-[320px] space-y-3"
               >
-                <p>{item.text}</p>
+                <p className="text-[15px] flex-grow">{item.text}</p>
                 <div className="flex items-center justify-between border-t border-t-green-90 pt-4 flex-wrap gap-2">
-                  <div className="flex  items-center gap-3">
-                    {/* author */}
-                    <p className="font-medium">{item.author}</p>
-                  </div>
+                  <p className="font-medium">{item.author}</p>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </motion.div>
+
         {/* navigation btns */}
         <motion.div
           variants={fadeInUp}
-          className="flex  items-center justify-center mt-10 gap-5"
+          className="flex items-center justify-center mt-10 gap-5"
         >
-          <button className="h-12 w-12 bg-[#2A998D]  transition-colors flex items-center justify-center rounded-xl  prev-btn">
+          <button className="h-12 w-12 bg-[#2A998D] transition-colors flex items-center justify-center rounded-xl prev-btn disabled:opacity-50 disabled:cursor-not-allowed">
             <RiArrowLeftLine size={20} className="text-white" />
           </button>
-          <button className="h-12 w-12 bg-[#2A998D]   transition-colors flex items-center justify-center rounded-xl  next-btn">
+          <button className="h-12 w-12 bg-[#2A998D] transition-colors flex items-center justify-center rounded-xl next-btn disabled:opacity-50 disabled:cursor-not-allowed">
             <RiArrowRightLine size={20} className="text-white" />
           </button>
         </motion.div>
