@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion } from "motion/react";
 import Img1 from "../images/founders/sir.jpeg";
-import Img2 from "../images/founders/girl.jpg";
+import Img2 from "../images/founders/mam.jpeg";
 import { FaLinkedin } from "react-icons/fa";
 import { clientLogo } from "../constant/data";
 import Marquee from "react-fast-marquee";
@@ -88,12 +88,19 @@ const About = () => {
                 {/* Half-circle white overlay */}
               </div>
 
-              <div className="pl-5">
+              <a
+                href="https://www.linkedin.com/in/e-bharathi-a137b1165/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pl-5"
+              >
                 <h2 className="flex items-center justify-center gap-2 text-theme-purple mt-6 text-[23px] font-semibold">
-                  Abu <FaLinkedin className="text-[20px] text-blue-600" />
+                  Bharathi <FaLinkedin className="text-[20px] text-blue-600" />
                 </h2>
-                <p className="text-theme-purple mt-6 text-[18px]">Director</p>
-              </div>
+                <p className="text-theme-purple text-center mt-6 text-[18px]">
+                  Director
+                </p>
+              </a>
             </div>
           </div>
 
