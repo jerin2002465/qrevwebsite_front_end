@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { motion } from "motion/react";
-import Img1 from "../images/founders/user1.jpeg";
+import Img1 from "../images/founders/sir.jpeg";
 import Img2 from "../images/founders/girl.jpg";
 import { FaLinkedin } from "react-icons/fa";
 import { clientLogo } from "../constant/data";
 import Marquee from "react-fast-marquee";
 import { fadeIn, staggerContainer } from "../motion/animations";
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -47,33 +48,41 @@ const About = () => {
           {/* Card section */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 max-w-3xl mt-5 mx-auto px-4 cursor-pointer">
             {/* Card 1 */}
-            <div className="flex flex-col items-center p-10 px-5 rounded-[50px] shadow-md bg-white transition-transform duration-300 hover:scale-105">
-              <div className="relative w-[150px] h-[150px] mt-4">
+            <div className="flex flex-col items-center p-10 px-5 rounded-[50px] shadow-[0px_0px_3px_rgba(0,0,0,0.5)] bg-white transition-transform duration-300 hover:scale-105">
+              <div className="relative w-[150px] h-[150px] mt-4 ">
                 <img
                   src={Img1}
                   alt="Card image"
-                  className="w-full h-full object-cover rounded-full  border-transparent"
+                  className="w-full h-full object-cover rounded-full shadow-[0px_0px_2px_rgba(0,0,0,0.5)]   border-transparent"
                 />
 
                 {/* Half-circle white overlay */}
               </div>
 
-              <div className="pl-5">
+              <a
+                href="https://www.linkedin.com/in/abavanan-mani-bb672b57"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pl-5"
+              >
                 <h2 className="flex items-center justify-center gap-2 text-theme-purple mt-6 text-[23px] font-semibold">
-                  Abu <FaLinkedin className="text-[20px] text-blue-600" />
+                  Abavanan Bharathi{" "}
+                  <FaLinkedin className="text-[20px] text-blue-600" />
                 </h2>
 
-                <p className="text-theme-purple mt-6 text-[18px]">Founder</p>
-              </div>
+                <p className="text-theme-purple text-center mt-6 text-[18px]">
+                  Founder
+                </p>
+              </a>
             </div>
 
             {/* Card 2 */}
-            <div className="flex flex-col items-center p-10 px-5 rounded-[50px] shadow-md bg-white   transition-transform duration-300 hover:scale-105">
+            <div className="flex flex-col items-center p-10 px-5 rounded-[50px] shadow-[0px_0px_3px_rgba(0,0,0,0.5)] bg-white   transition-transform duration-300 hover:scale-105">
               <div className="relative w-[150px] h-[150px] mt-4">
                 <img
                   src={Img2}
                   alt="Card image"
-                  className="w-full h-full object-cover rounded-full  border-transparent"
+                  className="w-full h-full object-cover rounded-full shadow-[0px_0px_2px_rgba(0,0,0,0.5)]  border-transparent"
                 />
 
                 {/* Half-circle white overlay */}
