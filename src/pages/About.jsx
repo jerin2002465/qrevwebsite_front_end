@@ -98,7 +98,7 @@ const About = () => {
                   Bharathi <FaLinkedin className="text-[20px] text-blue-600" />
                 </h2>
                 <p className="text-theme-purple text-center mt-6 text-[18px]">
-                  Director
+                  Executive Director
                 </p>
               </a>
             </div>

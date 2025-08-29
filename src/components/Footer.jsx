@@ -1,10 +1,15 @@
 import React from "react";
-import { contactInfo, footerLists, socialIcons } from "../constant/data";
+import {
+  contactInfo,
+  footerLists,
+  socialIcons,
+  footerServicesContact,
+} from "../constant/data";
 //import motion
 import { motion } from "motion/react";
 import { fadeInUp, staggerContainer } from "../motion/animations";
-
 import Logo from "../images/logo/logo.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -18,7 +23,7 @@ const Footer = () => {
         className="container"
       >
         {/* Footer top */}
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_0.7fr_0.7fr_0.7fr]">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {/* Footer brand */}
           <motion.div variants={fadeInUp}>
             {/* logo */}
@@ -46,9 +51,20 @@ const Footer = () => {
           </motion.div>
 
           {/* Footer list */}
-          {footerLists.map((item) => (
-            <motion.div variants={fadeInUp} className="space-y-3" key={item.id}>
-              <p className="text-lg font-semibold">{item.title}</p>
+          {footerLists.map((item, index) => (
+            <div className="space-y-3 flex flex-col">
+              <Link
+                to="/"
+                className="text-lg hover:underline transition hover:text-[#2A998D] font-semibold"
+              >
+                Home
+              </Link>
+              <Link
+                to={item.href}
+                className="text-lg hover:underline transition hover:text-[#2A998D] font-semibold"
+              >
+                {item.title}
+              </Link>
               <ul className="space-y-2.5">
                 {item.links.map((link, index) => (
                   <li key={index}>
@@ -61,19 +77,52 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
+          ))}
+
+          {footerServicesContact.map((item, index) => (
+            <div className="space-y-3">
+              <Link
+                to={item.href}
+                className="text-lg hover:underline transition hover:text-[#2A998D] font-semibold"
+              >
+                {item.title}
+              </Link>
+              {item.links && ( // ✅ check before mapping
+                <ul className="space-y-2.5">
+                  {item.links.map((link, index) => (
+                    <li key={index}>
+                      <a
+                        href="#"
+                        className="hover:underline transition hover:text-[#2A998D]"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           ))}
 
           {/* Social icons */}
           <motion.div variants={fadeInUp}>
-            <p className="text-lg font-semibold">Social Profiles</p>
+            <Link
+              to="/contact"
+              className="text-lg mb-5 font-semibold hover:underline transition hover:text-[#2A998D]"
+            >
+              Contact
+            </Link>
+            <p className="text-lg mt-5 font-semibold">Social Profiles</p>
             <div className="flex mt-5 gap-3">
               {socialIcons.map((icon) => (
                 <button
                   className="p-3.5 hover:shadow-md bg-white-97 hover:bg-white-99 transition-all"
                   key={icon.id}
                 >
-                  <a href="#">{<icon.icon className="text-[#2A998D]" />}</a>
+                  <a href={icon.href}>
+                    {<icon.icon className="text-[#2A998D]" />}
+                  </a>
                 </button>
               ))}
             </div>

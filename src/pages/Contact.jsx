@@ -11,6 +11,7 @@ const Contact = () => {
     email: "",
     phone: "",
     company: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -35,6 +36,8 @@ const Contact = () => {
       newErrors.phone = "Please enter a valid phone number";
     if (!form.company) newErrors.company = "Company name is required";
 
+    if (!form.message) newErrors.message = "Your message is required";
+
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
@@ -46,6 +49,7 @@ const Contact = () => {
         email: "",
         phone: "",
         company: "",
+        message: "",
       });
     }
   };
@@ -92,6 +96,29 @@ const Contact = () => {
               )}
             </div>
 
+            {/* Company */}
+            <div>
+              <label
+                htmlFor="company"
+                className="block mb-2 text-sm font-medium text-gray-700"
+              >
+                Organization
+              </label>
+              <input
+                value={form.company}
+                onChange={handleChange}
+                type="text"
+                id="company"
+                placeholder="Enter your organization"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-gray-900 
+          focus:ring-2 focus:ring-[#2A998D] focus:border-[#2A998D]  dark:border-gray-600 
+          dark:text-white dark:placeholder-gray-400 transition"
+              />
+              {errors.company && (
+                <p className="text-red-500 text-xs mt-1">{errors.company}</p>
+              )}
+            </div>
+
             {/* Email */}
             <div>
               <label
@@ -126,7 +153,8 @@ const Contact = () => {
               <PhoneInput
                 value={form.phone}
                 onChange={(value) => setForm({ ...form, phone: value })}
-                country={"in"} // default India
+                country={"us"}
+                preferredCountries={["us"]}
                 // inputClass="!w-full !h-11 !text-gray-900 !rounded-lg !border !border-gray-300 focus:!ring-2 focus:!ring-[#2A998D]"
                 // buttonClass="!border-gray-300 !bg-gray-50"
                 inputClass="!w-full !h-11 !pl-12 !pr-4 !rounded-lg !border !border-gray-300 !bg-gray-50 !text-gray-900 focus:!ring-2 focus:!ring-[#2A998D] focus:!border-[#2A998D] !transition"
@@ -138,26 +166,26 @@ const Contact = () => {
               )}
             </div>
 
-            {/* Company */}
+            {/* Message  */}
             <div>
               <label
-                htmlFor="company"
-                className="block mb-2 text-sm font-medium text-gray-700"
+                for="message"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Company Name
+                Your message
               </label>
-              <input
-                value={form.company}
+              <textarea
                 onChange={handleChange}
-                type="text"
-                id="company"
-                placeholder="Enter your company name"
+                value={form.message}
+                id="message"
+                rows="4"
                 className="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-gray-900 
           focus:ring-2 focus:ring-[#2A998D] focus:border-[#2A998D]  dark:border-gray-600 
           dark:text-white dark:placeholder-gray-400 transition"
-              />
-              {errors.company && (
-                <p className="text-red-500 text-xs mt-1">{errors.company}</p>
+                placeholder="Leave a comment..."
+              ></textarea>
+              {errors.message && (
+                <p className="text-red-500 text-xs mt-1">{errors.message}</p>
               )}
             </div>
 

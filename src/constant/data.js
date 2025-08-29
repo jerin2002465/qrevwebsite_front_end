@@ -5,6 +5,7 @@ import {
   RiFacebookBoxFill,
   RiTwitterFill,
   RiLinkedinFill,
+  RiInstagramFill,
 } from "@remixicon/react";
 
 export const navItems = [
@@ -92,14 +93,6 @@ export const benefitItems = [
 export const coursesSecItems = [
   {
     id: 1,
-    img: "/images/course-img-1.png",
-    title: "Web Design Fundamentals",
-    text: "Transform your sales and business development with QREV Business Solutions. Align your organization, optimize operations, and foster a winning culture.",
-    instructor: "Sales & Business Development",
-    tags: [{ tag: "4 Weeks" }, { tag: "Beginner" }],
-  },
-  {
-    id: 2,
     img: "/images/course-img-2.png",
     title: "Mobile App Development",
     text: "A business transformation that involves aligning organizational structures, operations and culture with your organization’s mission, vision, strategy and values. QREV Business Solutions supports you at all levels.",
@@ -107,17 +100,26 @@ export const coursesSecItems = [
     tags: [{ tag: "8 Weeks" }, { tag: "Intermediate" }],
   },
   {
-    id: 3,
+    id: 2,
     img: "/images/course-img-3.png",
     title: "Front-End Web Development",
     text: "Clearly defining processes, managing them well and adjusting them systematically leads to sustainable performance improvement. QREV Business Solutions guides you and provides training.",
     instructor: "Administrative Services",
     tags: [{ tag: "10 Weeks" }, { tag: "Intermediate" }],
   },
+  // {
+  //   id: 3,
+  //   img: "/images/course-img-1.png",
+  //   title: "Web Design Fundamentals",
+  //   text: "Transform your sales and business development with QREV Business Solutions. Align your organization, optimize operations, and foster a winning culture.",
+  //   instructor: "Sales & Business Development",
+  //   tags: [{ tag: "4 Weeks" }, { tag: "Beginner" }],
+  // },
 ];
 
 /*-------------------------Services Items-----------------------------------*/
 import rcmImage1 from "../../public/images/course-img-1.png";
+
 export const rcmServices = [
   {
     id: 1,
@@ -184,10 +186,10 @@ export const rcmServicesDetails = [
 export const softwarebusiness = [
   {
     id: 2,
-    title: "Business Development Services",
+    title: "Sales & Business Development",
     img: rcmImage1,
     description:
-      "Manage your administrative tasks, minimize errors, and improve your bottom line with our proficient healthcare revenue cycle management services.",
+      "Sales & Business Development drive business growth by building relationships, exploring new opportunities, and closing profitable deals",
   },
 ];
 
@@ -243,7 +245,7 @@ export const softwareSolutions = [
     title: "Software Solutions",
     img: rcmImage1,
     description:
-      "Manage your administrative tasks, minimize errors, and improve your bottom line with our proficient healthcare revenue cycle management services.",
+      "Software Solutions simplify complex business challenges through innovative technology and tailored applications.",
   },
 ];
 
@@ -300,13 +302,6 @@ export const softwareSolutionsDetails = [
   {
     id: 3,
     categoryId: 3,
-    title: "IT Staffing Services",
-    description:
-      "Skilled IT professionals who can augment your team and ensure you get the right talent to meet your specific project demands and drive innovation.",
-  },
-  {
-    id: 3,
-    categoryId: 3,
     title: "Database Consulting Service",
     description:
       "Efficient management of customer profiles, contacts, and related documents. We also provide guidance on database solutions for member tracking, fee management, event coordination, and volunteer recruitment.",
@@ -321,35 +316,6 @@ export const softwareSolutionsDetails = [
 ];
 
 /*----------------------- Database Services --------------------------*/
-export const databaseServices = [
-  {
-    id: 4,
-    title: "Database Services",
-    img: rcmImage1,
-    description: "",
-  },
-];
-
-export const databaseServicesDetails = [
-  {
-    id: 4,
-    categoryId: 4,
-    title: "",
-    description: "",
-  },
-  {
-    id: 4,
-    categoryId: 4,
-    title: "",
-    description: "",
-  },
-  {
-    id: 4,
-    categoryId: 4,
-    title: "",
-    description: "",
-  },
-];
 
 /*------------------------------Client Logo -----------------------------*/
 import Client1 from "../images/logo/logo.png";
@@ -445,35 +411,21 @@ export const contactInfo = [
   {
     id: 1,
     icon: RiMailSendFill,
-    label: "qrevbusinesspvtltd@gmail.com",
+    label: "admin@qrevbusinesssolutions.com",
   },
   {
     id: 2,
     icon: RiPhoneFill,
 
-    label: "+91 91813 23 2309",
+    label: "+1 630 473 4131",
   },
-  // {
-  //   id: 3,
-  //   icon: RiUserLocationLine,
-  //   label: "Somewhere in the World",
-  // },
 ];
 
 export const footerLists = [
   {
     id: 1,
-    title: "Home",
-    links: [
-      { label: "Benefits" },
-      { label: "Our Courses" },
-      { label: "Our Testimonials" },
-      { label: "Our FAQ" },
-    ],
-  },
-  {
-    id: 2,
     title: "About Us",
+    href: "/about",
     links: [
       { label: "Company" },
       { label: "Achievements" },
@@ -482,17 +434,36 @@ export const footerLists = [
   },
 ];
 
+export const footerServicesContact = [
+  {
+    id: 1,
+    title: "Services",
+    href: "/services",
+
+    links: [
+      { label: "Operational Efficiency Boosting" },
+      { label: "Administrative Services" },
+      { label: "Sales & Business Development" },
+      { label: "Revenue Cycle Management Services" },
+      { label: "Software Solutions" },
+    ],
+  },
+];
+
 export const socialIcons = [
   {
     id: 1,
     icon: RiFacebookBoxFill,
+    href: "https://www.facebook.com/profile.php?id=61579856014535",
   },
   {
     id: 2,
-    icon: RiTwitterFill,
+    icon: RiLinkedinFill,
+    href: "https://www.linkedin.com/company/qrevbusinesssolutions/?viewAsMember=true",
   },
   {
     id: 3,
-    icon: RiLinkedinFill,
+    icon: RiInstagramFill,
+    href: "https://www.instagram.com/qrevbusiness/",
   },
 ];
