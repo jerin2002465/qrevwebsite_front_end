@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { motion } from "motion/react";
 import Img1 from "../images/founders/sir.jpeg";
 import Img2 from "../images/founders/mam.jpeg";
@@ -7,8 +7,13 @@ import { clientLogo } from "../constant/data";
 import Marquee from "react-fast-marquee";
 import { fadeIn, staggerContainer } from "../motion/animations";
 import { Link } from "react-router-dom";
+import { AboutFounderContext } from "../UseContexts/AboutScreenContexts/FounderUseContext";
+import { ClientContext } from "../UseContexts/AboutScreenContexts/ClientLogoUseContext";
+import { ClientLogoLoader, FounderImageLoader } from "../Loader/Loader";
 
 const About = () => {
+  const { data, loading } = useContext(AboutFounderContext);
+  const { sponserLogo, clientLoading } = useContext(ClientContext);
   return (
     <>
       <section className="mt-5">
@@ -47,61 +52,49 @@ const About = () => {
           {/*-------------------- Founder and Director ------------------ */}
           {/* Card section */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 max-w-3xl mt-5 mx-auto px-4 cursor-pointer">
-            {/* Card 1 */}
-            <div className="flex flex-col items-center p-10 px-5 rounded-[50px] shadow-[0px_0px_3px_rgba(0,0,0,0.5)] bg-white transition-transform duration-300 hover:scale-105">
-              <div className="relative w-[150px] h-[150px] mt-4 ">
-                <img
-                  src={Img1}
-                  alt="Card image"
-                  className="w-full h-full object-cover rounded-full shadow-[0px_0px_2px_rgba(0,0,0,0.5)]   border-transparent"
-                />
+            {loading ? (
+              <>
+                {[...Array(2)].map((_, i) => (
+                  <FounderImageLoader key={i} />
+                ))}
+              </>
+            ) : (
+              data.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="flex flex-col items-center p-10 px-5 rounded-[50px] shadow-[0px_0px_3px_rgba(0,0,0,0.5)] bg-white transition-transform duration-300 hover:scale-105"
+                >
+                  {/* Founder Image */}
+                  <div className="relative w-[150px] h-[150px] mt-4">
+                    <img
+                      src={item.founder_image}
+                      alt={`Founder ${index + 1}`}
+                      className="w-full h-full object-cover rounded-full shadow-[0px_0px_2px_rgba(0,0,0,0.5)] border-transparent"
+                    />
+                  </div>
 
-                {/* Half-circle white overlay */}
-              </div>
-
-              <a
-                href="https://www.linkedin.com/in/abavanan-mani-bb672b57"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pl-5"
-              >
-                <h2 className="flex items-center justify-center gap-2 text-theme-purple mt-6 text-[23px] font-semibold">
-                  Abavanan Bharathi{" "}
-                  <FaLinkedin className="text-[20px] text-blue-600" />
-                </h2>
-
-                <p className="text-theme-purple text-center mt-6 text-[18px]">
-                  Founder
-                </p>
-              </a>
-            </div>
-
-            {/* Card 2 */}
-            <div className="flex flex-col items-center p-10 px-5 rounded-[50px] shadow-[0px_0px_3px_rgba(0,0,0,0.5)] bg-white   transition-transform duration-300 hover:scale-105">
-              <div className="relative w-[150px] h-[150px] mt-4">
-                <img
-                  src={Img2}
-                  alt="Card image"
-                  className="w-full h-full object-cover rounded-full shadow-[0px_0px_2px_rgba(0,0,0,0.5)]  border-transparent"
-                />
-
-                {/* Half-circle white overlay */}
-              </div>
-
-              <a
-                href="https://www.linkedin.com/in/e-bharathi-a137b1165/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pl-5"
-              >
-                <h2 className="flex items-center justify-center gap-2 text-theme-purple mt-6 text-[23px] font-semibold">
-                  Bharathi <FaLinkedin className="text-[20px] text-blue-600" />
-                </h2>
-                <p className="text-theme-purple text-center mt-6 text-[18px]">
-                  Executive Director
-                </p>
-              </a>
-            </div>
+                  {/* Founder Details - you can extend API to include name, role, linkedin */}
+                  <a
+                    href={
+                      index === 0
+                        ? "https://www.linkedin.com/in/abavanan-mani-bb672b57"
+                        : "https://www.linkedin.com/in/e-bharathi-a137b1165/"
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="pl-5"
+                  >
+                    <h2 className="flex items-center justify-center gap-2 text-theme-purple mt-6 text-[23px] font-semibold">
+                      {index === 0 ? "Abavanan Bharathi" : "Bharathi"}
+                      <FaLinkedin className="text-[20px] text-blue-600" />
+                    </h2>
+                    <p className="text-theme-purple text-center mt-6 text-[18px]">
+                      {index === 0 ? "Founder" : "Executive Director"}
+                    </p>
+                  </a>
+                </div>
+              ))
+            )}
           </div>
 
           {/* ------------------------Client Logo --------------------------- */}
@@ -113,19 +106,27 @@ const About = () => {
             variants={fadeIn}
             className="mt-10 relative overflow-hidden"
           >
-            <Marquee pauseOnHover={true} gradient={false} speed={50}>
-              {[...clientLogo, ...clientLogo, ...clientLogo].map(
-                (logo, index) => (
-                  <div key={index} className="mx-8 flex items-center">
-                    <img
-                      src={logo.image}
-                      alt="client logo"
-                      className="h-12 w-auto object-contain"
-                    />
-                  </div>
-                )
-              )}
-            </Marquee>
+            {clientLoading ? (
+              <Marquee gradient={false} speed={50}>
+                {[...Array(6)].map((_, index) => (
+                  <ClientLogoLoader key={index} />
+                ))}
+              </Marquee>
+            ) : (
+              <Marquee pauseOnHover={true} gradient={false} speed={50}>
+                {[...sponserLogo, ...sponserLogo, ...sponserLogo].map(
+                  (logo, index) => (
+                    <div key={index} className="mx-8 flex items-center">
+                      <img
+                        src={logo.sponser_logo} // 👈 match backend field
+                        alt={`sponsor-logo-${index}`}
+                        className="h-12 w-auto object-contain"
+                      />
+                    </div>
+                  )
+                )}
+              </Marquee>
+            )}
 
             {/* left Gradient */}
             <div className="absolute top-0 left-0 bg-gradient-to-r from-white-97 via-white-97/80 to-transparent w-24 h-full z-10 pointer-events-none" />

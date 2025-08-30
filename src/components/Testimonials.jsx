@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Title from "./Title";
 import { testimonialsItems } from "../constant/data";
 import { RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
@@ -8,8 +8,11 @@ import { Navigation, Autoplay } from "swiper/modules";
 //import motion
 import { motion } from "motion/react";
 import { fadeIn, fadeInUp, staggerContainer } from "../motion/animations";
+import { ClientContext } from "../UseContexts/HomeScreenContexts/ClientReviewUseContext";
+import { ClientReviewLoader, VideoLoader } from "../Loader/Loader";
 
 const Testimonials = () => {
+  const { loading, clients } = useContext(ClientContext);
   return (
     <section className="mt-5">
       <motion.div
@@ -28,9 +31,10 @@ const Testimonials = () => {
               Our Client Reviews
             </h2>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam
-              eget elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac
-              cum eget habitasse in velit fringilla feugiat senectus in.
+              We take pride in the trust our clients place in us. Their feedback
+              reflects our commitment to quality, reliability, and long-lasting
+              partnerships. Here’s what some of our valued clients have to say
+              about working with us.
             </p>
           </div>
         </div>
@@ -70,18 +74,28 @@ const Testimonials = () => {
             }}
             className="mt-14 lg:mt-16"
           >
-            {testimonialsItems.map((item) => (
-              <SwiperSlide
-                key={item.id}
-                className="bg-[#EEFAF9] border border-white-95 p-8 lg:p-10 rounded-[10px] 
+            {loading ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[...Array(4)].map((_, i) => (
+                  <ClientReviewLoader key={i} />
+                ))}
+              </div>
+            ) : (
+              clients.map((item) => (
+                <SwiperSlide
+                  key={item.id}
+                  className="bg-[#EEFAF9] border border-white-95 p-8 lg:p-10 rounded-[10px] 
                    flex flex-col justify-between h-[320px] space-y-3"
-              >
-                <p className="text-[15px] flex-grow">{item.text}</p>
-                <div className="flex items-center justify-between border-t border-t-green-90 pt-4 flex-wrap gap-2">
-                  <p className="font-medium">{item.author}</p>
-                </div>
-              </SwiperSlide>
-            ))}
+                >
+                  <p className="text-[15px] flex-grow">
+                    {item.client_description}
+                  </p>
+                  <div className="flex items-center justify-between border-t border-t-green-90 pt-4 flex-wrap gap-2">
+                    <p className="font-medium">{item.client_name}</p>
+                  </div>
+                </SwiperSlide>
+              ))
+            )}
           </Swiper>
         </motion.div>
 

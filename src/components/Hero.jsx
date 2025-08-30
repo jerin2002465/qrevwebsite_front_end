@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { heroLogos } from "../constant/data";
 import { RiPlayFill } from "@remixicon/react";
 import Marquee from "react-fast-marquee";
@@ -8,8 +8,15 @@ import { motion } from "motion/react";
 import { fadeIn, fadeInUp, staggerContainer } from "../motion/animations";
 import AnimatedBackground from "../motion/AnimatedBackground";
 import { IoFlash } from "react-icons/io5";
+import { VideoContext } from "../UseContexts/HomeScreenContexts/VideoUseContext";
+import { VideoLoader } from "../Loader/Loader";
 
 const Hero = () => {
+  const { loading, videos } = useContext(VideoContext);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const videoUrl = videos.length > 0 ? videos[0].video_path : null;
+
   return (
     <>
       {/* <section className="relative overflow-hidden bg-gradient-to-br from-[#E0F7F4] via-[#F0FAF9] to-white py-20"> */}
@@ -81,28 +88,74 @@ const Hero = () => {
               </motion.button>
             </div>
           </div>
-          {/* banner */}
-          <motion.figure
-            variants={fadeIn}
-            className="mt-10 md:mt-14 lg:mt-[50px] max-w-[920px] w-full h-[500px] mx-auto overflow-hidden relative rounded-xl"
-          >
-            <img
-              src="/images/hero-banner.png"
-              alt="hero banner"
-              width={940}
-              height={500}
-              className="w-full h-full object-cover"
-            />
 
-            {/* Dark overlay */}
-            <div className="absolute bg-black/20 inset-0 z-10" />
-            {/* play btn */}
-            <div className="absolute top-1/2 left-1/2 cursor-pointer -translate-y-1/2 -translate-x-1/2 z-20">
-              <span className="bg-white h-16 w-16 flex justify-center items-center rounded-full play-btn">
-                <RiPlayFill size={30} />
-              </span>
-            </div>
+          {/*------------------ Videos ----------------- */}
+
+          <motion.figure
+            // variants={fadeIn}
+            className="mt-10 md:mt-14 lg:mt-[50px] max-w-[920px] w-full h-[500px] shadow-lg mx-auto overflow-hidden relative rounded-xl"
+          >
+            {loading ? (
+              <VideoLoader />
+            ) : isPlaying && videoUrl ? (
+              <video
+                src={videoUrl}
+                controls
+                autoPlay
+                onEnded={() => setIsPlaying(false)} // back to play button when finished
+                className="w-full h-full object-cover rounded-xl"
+              />
+            ) : (
+              <div className="w-full h-full relative">
+                {/* 🔹 Video thumbnail (first frame or poster) */}
+                <video
+                  src={videoUrl}
+                  className="w-full h-full object-cover rounded-xl"
+                  preload="metadata"
+                  muted
+                  playsInline
+                />
+
+                {/* Play button overlay */}
+                <div
+                  onClick={() => setIsPlaying(true)}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 cursor-pointer"
+                >
+                  <span className="bg-[#2A998D]  h-16 w-16 flex justify-center items-center rounded-full animate-pulse shadow-lg">
+                    <RiPlayFill size={30} className="text-white" />
+                  </span>
+                </div>
+              </div>
+            )}
           </motion.figure>
+
+          {/* <motion.figure
+            variants={fadeIn}
+            className="mt-10 md:mt-14 lg:mt-[50px] max-w-[920px] w-full h-[500px] mx-auto overflow-hidden relative rounded-xl bg-gray-400"
+          >
+            {isPlaying && videoUrl ? (
+              <video
+                src={videoUrl}
+                controls
+                autoPlay
+                onEnded={() => setIsPlaying(false)} 
+                className="w-full h-full object-cover rounded-xl"
+              />
+            ) : (
+           
+              <div className="w-full h-full flex items-center justify-center  rounded-xl relative">
+           
+                <div
+                  onClick={() => setIsPlaying(true)}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 cursor-pointer"
+                >
+                  <span className="bg-white h-16 w-16 flex justify-center items-center rounded-full animate-pulse shadow-lg">
+                    <RiPlayFill size={30} className="text-black" />
+                  </span>
+                </div>
+              </div>
+            )}
+          </motion.figure> */}
         </motion.div>
       </section>
     </>
