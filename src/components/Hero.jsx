@@ -10,6 +10,7 @@ import AnimatedBackground from "../motion/AnimatedBackground";
 import { IoFlash } from "react-icons/io5";
 import { VideoContext } from "../UseContexts/HomeScreenContexts/VideoUseContext";
 import { VideoLoader } from "../Loader/Loader";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const { loading, videos } = useContext(VideoContext);
@@ -84,7 +85,7 @@ const Hero = () => {
                 variants={fadeInUp}
                 className="bg-[#2A998D] px-5 py-2 text-white rounded-2xl max-sm:w-[80%]"
               >
-                Explore Services
+                <Link to="/services">Explore Services</Link>
               </motion.button>
             </div>
           </div>

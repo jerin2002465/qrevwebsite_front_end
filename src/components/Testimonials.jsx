@@ -39,7 +39,7 @@ const Testimonials = () => {
           </div>
         </div>
 
-        <motion.div variants={fadeIn}>
+        {/* <motion.div variants={fadeIn}>
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={30}
@@ -53,20 +53,20 @@ const Testimonials = () => {
               pauseOnMouseEnter: true,
               disableOnInteraction: false,
             }}
-            loop={false} // ❌ loop must be false for prev/next disabling
+            loop={false} 
             navigation={{
               prevEl: ".prev-btn",
               nextEl: ".next-btn",
             }}
             onInit={(swiper) => {
-              // disable prev on first load
+            
               const prevBtn = document.querySelector(".prev-btn");
               const nextBtn = document.querySelector(".next-btn");
 
               if (prevBtn) prevBtn.disabled = swiper.isBeginning;
               if (nextBtn) nextBtn.disabled = swiper.isEnd;
 
-              // listen for slide changes
+           
               swiper.on("slideChange", () => {
                 if (prevBtn) prevBtn.disabled = swiper.isBeginning;
                 if (nextBtn) nextBtn.disabled = swiper.isEnd;
@@ -84,8 +84,8 @@ const Testimonials = () => {
               clients.map((item) => (
                 <SwiperSlide
                   key={item.id}
-                  className="bg-[#EEFAF9] border border-white-95 p-8 lg:p-10 rounded-[10px] 
-                   flex flex-col justify-between h-[320px] space-y-3"
+                  className="bg-[red] border border-white-95 p-8 lg:p-10 rounded-[10px] 
+                   flex flex-col justify-between h-[320px]  w-full space-y-3"
                 >
                   <p className="text-[15px] flex-grow">
                     {item.client_description}
@@ -96,6 +96,62 @@ const Testimonials = () => {
                 </SwiperSlide>
               ))
             )}
+          </Swiper>
+        </motion.div> */}
+
+        <motion.div variants={fadeIn}>
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            spaceBetween={30}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 1.5 },
+              1280: { slidesPerView: 2.5 },
+            }}
+            autoplay={{
+              delay: 3000,
+              pauseOnMouseEnter: true,
+              disableOnInteraction: false,
+            }}
+            loop={false}
+            navigation={{
+              prevEl: ".prev-btn",
+              nextEl: ".next-btn",
+            }}
+            onInit={(swiper) => {
+              const prevBtn = document.querySelector(".prev-btn");
+              const nextBtn = document.querySelector(".next-btn");
+
+              if (prevBtn) prevBtn.disabled = swiper.isBeginning;
+              if (nextBtn) nextBtn.disabled = swiper.isEnd;
+
+              swiper.on("slideChange", () => {
+                if (prevBtn) prevBtn.disabled = swiper.isBeginning;
+                if (nextBtn) nextBtn.disabled = swiper.isEnd;
+              });
+            }}
+            className="mt-14 lg:mt-16"
+          >
+            {(loading ? [...Array(4)] : clients).map((item, i) => (
+              <SwiperSlide
+                key={item?.id || i}
+                className="bg-[#EEFAF9]  border border-white-95 p-8 lg:p-10 rounded-[10px] 
+                   flex flex-col justify-between h-[320px] w-full space-y-3"
+              >
+                {loading ? (
+                  <ClientReviewLoader />
+                ) : (
+                  <>
+                    <p className="text-[15px] h-[90px] flex-grow">
+                      {item.client_description}
+                    </p>
+                    <div className="flex items-center justify-between border-t border-t-green-90 pt-4 flex-wrap gap-2">
+                      <p className="font-medium">{item.client_name}</p>
+                    </div>
+                  </>
+                )}
+              </SwiperSlide>
+            ))}
           </Swiper>
         </motion.div>
 

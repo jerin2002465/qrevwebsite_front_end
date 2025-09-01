@@ -118,9 +118,9 @@ const About = () => {
                   (logo, index) => (
                     <div key={index} className="mx-8 flex items-center">
                       <img
-                        src={logo.sponser_logo} // 👈 match backend field
+                        src={logo.sponser_logo}
                         alt={`sponsor-logo-${index}`}
-                        className="h-12 w-auto object-contain"
+                        className="h-36 w-36 object-contain"
                       />
                     </div>
                   )
