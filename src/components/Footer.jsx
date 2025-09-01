@@ -273,8 +273,8 @@ const Footer = () => {
 
         {/* Footer bottom */}
         <motion.p variants={fadeInUp} className="mt-16 text-center lg:mt-20">
-          &copy; {new Date().getFullYear()} Qrev Business Solutions Pvt Ltd. All
-          rights reserved.
+          &copy; {new Date().getFullYear()} Qrev Business Solutions. All rights
+          reserved.
         </motion.p>
       </motion.div>
     </footer>

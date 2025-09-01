@@ -33,6 +33,7 @@ const App = () => {
         <Footer />
         <ScrollTop />
         {/* 👇 Toast container must be here */}
+        <ToastContainer position="top-right" autoClose={3000} />
       </BrowserRouter>
     </>
   );

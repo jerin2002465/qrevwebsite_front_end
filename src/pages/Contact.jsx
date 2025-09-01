@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { motion } from "motion/react";
 import { fadeInUp, staggerContainer } from "../motion/animations";
 import { toast } from "react-toastify";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { ContactContext } from "../UseContexts/ContactScreenContexts/ContactUseContext";
 
 const Contact = () => {
+  const { loading, postUserDetails } = useContext(ContactContext);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
-    company: "",
+    organization_name: "",
     message: "",
   });
 
@@ -19,7 +22,8 @@ const Contact = () => {
     setForm({ ...form, [e.target.id]: e.target.value });
     setErrors({ ...errors, [e.target.id]: "" });
   };
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let newErrors = {};
 
@@ -34,23 +38,33 @@ const Contact = () => {
     }
     if (!form.phone || form.phone.length < 8)
       newErrors.phone = "Please enter a valid phone number";
-    if (!form.company) newErrors.company = "Company name is required";
-
+    if (!form.organization_name)
+      newErrors.organization_name = "Company name is required";
     if (!form.message) newErrors.message = "Your message is required";
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      console.log("Form submitted:", form);
+      const res = await postUserDetails(form);
 
-      // clear form
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        message: "",
-      });
+      if (res.success) {
+        toast.success("Message sent successfully");
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          organization_name: "",
+          message: "",
+        });
+      } else {
+        toast.error(
+          `Failed to send ❌: ${
+            typeof res.error === "string"
+              ? res.error
+              : res.error?.error || "Unknown error"
+          }`
+        );
+      }
     }
   };
 
@@ -99,23 +113,25 @@ const Contact = () => {
             {/* Company */}
             <div>
               <label
-                htmlFor="company"
+                htmlFor="organization_name"
                 className="block mb-2 text-sm font-medium text-gray-700"
               >
                 Organization
               </label>
               <input
-                value={form.company}
+                value={form.organization_name}
                 onChange={handleChange}
                 type="text"
-                id="company"
+                id="organization_name"
                 placeholder="Enter your organization"
                 className="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-gray-50 text-gray-900 
           focus:ring-2 focus:ring-[#2A998D] focus:border-[#2A998D]  dark:border-gray-600 
           dark:text-white dark:placeholder-gray-400 transition"
               />
-              {errors.company && (
-                <p className="text-red-500 text-xs mt-1">{errors.company}</p>
+              {errors.organization_name && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.organization_name}
+                </p>
               )}
             </div>
 
@@ -152,11 +168,18 @@ const Contact = () => {
               </label>
               <PhoneInput
                 value={form.phone}
-                onChange={(value) => setForm({ ...form, phone: value })}
+                onChange={(value) => {
+                  // setForm({
+                  //   ...form,
+                  //   phone: value,
+                  // });
+                  setForm({
+                    ...form,
+                    phone: value.startsWith("+") ? value : "+" + value,
+                  });
+                }}
                 country={"us"}
                 preferredCountries={["us"]}
-                // inputClass="!w-full !h-11 !text-gray-900 !rounded-lg !border !border-gray-300 focus:!ring-2 focus:!ring-[#2A998D]"
-                // buttonClass="!border-gray-300 !bg-gray-50"
                 inputClass="!w-full !h-11 !pl-12 !pr-4 !rounded-lg !border !border-gray-300 !bg-gray-50 !text-gray-900 focus:!ring-2 focus:!ring-[#2A998D] focus:!border-[#2A998D] !transition"
                 buttonClass="!border-gray-300 !bg-gray-50 !rounded-l-lg"
                 containerClass="!w-full"
@@ -195,7 +218,7 @@ const Contact = () => {
               className="w-full py-3 rounded-lg bg-[#2A998D] text-white font-semibold 
         hover:bg-[#26897F] focus:ring-4 focus:ring-[#2A998D]/40 transition-all duration-200"
             >
-              Submit
+              {loading ? "Sending..." : "Send Message"}
             </button>
           </form>
         </motion.div>
