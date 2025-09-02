@@ -51,7 +51,7 @@ const About = () => {
 
           {/*-------------------- Founder and Director ------------------ */}
           {/* Card section */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 max-w-3xl mt-5 mx-auto px-4 cursor-pointer">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 max-w-3xl mt-8 mx-auto px-4 cursor-pointer">
             {loading ? (
               <>
                 {[...Array(2)].map((_, i) => (
@@ -85,7 +85,7 @@ const About = () => {
                     className="pl-5"
                   >
                     <h2 className="flex items-center justify-center gap-2 text-theme-purple mt-6 text-[23px] font-semibold">
-                      {index === 0 ? "Abavanan Bharathi" : "Bharathi"}
+                      {index === 0 ? "Abavanan Mani" : "Bharathi"}
                       <FaLinkedin className="text-[20px] text-blue-600" />
                     </h2>
                     <p className="text-theme-purple text-center mt-6 text-[18px]">

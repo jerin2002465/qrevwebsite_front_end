@@ -94,19 +94,17 @@ import SoftwareImg from "../images/services_images/software.jpg";
 export const coursesSecItems = [
   {
     id: 1,
-    img: OperationImg,
-    title: "Mobile App Development",
-    text: "QREV Business Solutions drives business transformation by aligning structures, operations, and culture with your mission and strategy. We support you at every level to unlock lasting growth",
-    instructor: "Operational Efficiency Boosting",
-    tags: [{ tag: "8 Weeks" }, { tag: "Intermediate" }],
-  },
-  {
-    id: 2,
     img: AdmimniImg,
-    title: "Front-End Web Development",
     text: "Streamline your operations with our expert administrative services. QREV Business Solutions ensures efficiency, accuracy, and hassle-free management.",
     instructor: "Administrative Services",
     tags: [{ tag: "10 Weeks" }, { tag: "Intermediate" }],
+  },
+  {
+    id: 2,
+    img: OperationImg,
+    text: "QREV Business Solutions drives business transformation by aligning structures, operations, and culture with your mission and strategy. We support you at every level to unlock lasting growth",
+    instructor: "Operational Efficiency Boosting",
+    tags: [{ tag: "8 Weeks" }, { tag: "Intermediate" }],
   },
 ];
 
@@ -298,13 +296,6 @@ export const softwareSolutionsDetails = [
     description:
       "Efficient management of customer profiles, contacts, and related documents. We also provide guidance on database solutions for member tracking, fee management, event coordination, and volunteer recruitment.",
   },
-  {
-    id: 3,
-    categoryId: 3,
-    title: "Virtual Global Capability Center",
-    description:
-      "Dedicated Virtual Centres that empower you to manage global operations, optimize overheads, enhance productivity, and drive ongoing innovation across diverse international markets.",
-  },
 ];
 
 /*----------------------- Database Services --------------------------*/
@@ -433,11 +424,26 @@ export const footerServicesContact = [
     href: "/services",
 
     links: [
-      { label: "Operational Efficiency Boosting" },
-      { label: "Administrative Services" },
-      { label: "Sales & Business Development" },
-      { label: "Revenue Cycle Management Services" },
-      { label: "Software Solutions" },
+      {
+        label: "Sales & Business Development",
+        href: "/services",
+      },
+      {
+        label: "Revenue Cycle Management Services",
+        href: "/services",
+      },
+      {
+        label: "Software Solutions",
+        href: "/services",
+      },
+      {
+        label: "Administrative Services",
+        href: "/services",
+      },
+      {
+        label: "Operational Efficiency Boosting",
+        href: "/services",
+      },
     ],
   },
 ];

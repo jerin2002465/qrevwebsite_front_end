@@ -235,7 +235,7 @@ const Footer = () => {
                   {item.links.map((link, index) => (
                     <li key={index}>
                       <a
-                        href="#"
+                        href={link.href}
                         className="hover:underline transition hover:text-[#2A998D]"
                       >
                         {link.label}

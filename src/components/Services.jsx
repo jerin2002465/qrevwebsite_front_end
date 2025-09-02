@@ -38,37 +38,9 @@ const Services = () => {
             </p>
           </div>
         </div>
-        {/* Card wrapper */}
 
         {/* Card wrapper */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10">
-          {coursesSecItems.map((item) => (
-            <motion.div
-              key={item.id}
-              variants={fadeInUp}
-              // className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden"
-
-              className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden"
-            >
-              {/* Image */}
-              <div className="w-full h-48">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-[20px] text-center mb-4">
-                  {item.instructor}
-                </h3>
-                <p className="text-sm leading-relaxed flex-grow">{item.text}</p>
-              </div>
-            </motion.div>
-          ))}
-
           {softwarebusiness.map((item) => (
             <Link key={item.id} to={`/services/${item.id}`} className="flex">
               <motion.div
@@ -96,11 +68,7 @@ const Services = () => {
               </motion.div>
             </Link>
           ))}
-        </div>
 
-        {/*---------------------- Services Layouts ---------------------*/}
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10">
           {/* Rcm Services  */}
           {rcmServices.map((item) => (
             <Link key={item.id} to={`/services/${item.id}`} className="flex">
@@ -158,6 +126,37 @@ const Services = () => {
                 </div>
               </motion.div>
             </Link>
+          ))}
+        </div>
+
+        {/*---------------------- Services Layouts ---------------------*/}
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10">
+          {coursesSecItems.map((item) => (
+            <motion.div
+              key={item.id}
+              variants={fadeInUp}
+              // className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden"
+
+              className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden"
+            >
+              {/* Image */}
+              <div className="w-full h-48">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-6 flex flex-col flex-grow">
+                <h3 className="text-[20px] text-center mb-4">
+                  {item.instructor}
+                </h3>
+                <p className="text-sm leading-relaxed flex-grow">{item.text}</p>
+              </div>
+            </motion.div>
           ))}
         </div>
       </motion.div>

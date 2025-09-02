@@ -32,10 +32,7 @@ const Testimonials = () => {
             </h2>
           </div>
         </div>
-        <motion.p
-          variants={fadeInUp}
-          className="text-center text-2xl md:text-xl font-medium mt-4 max-w-1xl mx-auto leading-relaxed"
-        >
+        <motion.p className="text-center text-2xl md:text-xl font-medium mt-4 max-w-1xl mx-auto leading-relaxed">
           The trust our clients place in us is our greatest badge of honor.
           Their powerful words stand as a testament to our uncompromising
           quality, rock-solid reliability, and partnerships that go beyond
