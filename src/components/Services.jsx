@@ -12,8 +12,7 @@ import { fadeInUp, staggerContainer } from "../motion/animations";
 
 import BusinessDevelopmentServices from "../pages/BusinessDevelopmentServices";
 import BillingServices from "./BillingServices";
-import { Link } from "react-router-dom";
-import { MdArrowOutward } from "react-icons/md";
+import { Link, useNavigate } from "react-router-dom";
 
 const Services = () => {
   return (
@@ -33,9 +32,9 @@ const Services = () => {
               Our Services
             </h2>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed ">
-              Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam
-              eget elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac
-              cum eget habitasse in velit fringilla feugiat senectus in.
+              We deliver smart, scalable, and result-driven solutions designed
+              to accelerate your business growth. Our services focus on quick
+              execution that drives revenue and impact
             </p>
           </div>
         </div>
@@ -90,7 +89,7 @@ const Services = () => {
                   <p className="text-sm leading-relaxed flex-grow">
                     {item.description}
                   </p>
-                  <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5">
+                  <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
                     More Info
                   </button>
                 </div>
@@ -123,7 +122,7 @@ const Services = () => {
                   <p className="text-sm leading-relaxed flex-grow">
                     {item.description}
                   </p>
-                  <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5">
+                  <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
                     More Info
                   </button>
                 </div>
@@ -137,72 +136,30 @@ const Services = () => {
               <motion.div
                 key={item.id}
                 variants={fadeInUp}
-                className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full"
+                className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full "
               >
-                <div className="w-full h-48">
+                <div className="w-full  h-52">
                   <img
                     src={item.img}
                     alt={item.title}
                     className="w-full h-full object-cover"
                   />
                 </div>
+                {/* [#EEFAF9]  */}
 
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-[20px] text-center mb-4">{item.title}</h3>
                   <p className="text-sm leading-relaxed flex-grow">
                     {item.description}
                   </p>
-                  <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5">
+                  <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white ">
                     More Info
                   </button>
                 </div>
               </motion.div>
             </Link>
           ))}
-
-          {/* Database Services  */}
-
-          {/* Business Services  */}
-          {/* {softwarebusiness.map((item) => (
-            <Link key={item.id} to={`/services/${item.id}`} className="flex">
-              <motion.div
-                key={item.id}
-                variants={fadeInUp}
-                className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full"
-              >
-                <div className="w-full h-48">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-[20px] text-center mb-4">{item.title}</h3>
-                  <p className="text-sm leading-relaxed flex-grow">
-                    {item.description}
-                  </p>
-                  <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5">
-                    More Info
-                  </button>
-                </div>
-              </motion.div>
-            </Link>
-          ))} */}
         </div>
-
-        {/* <div className="mx-auto mt-10 max-w-7xl space-y-6 p-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <SoftwareSolutions />
-            <DatabaseServices />
-          </div>
-        </div> */}
-
-        {/* -------------Business Development Services ------------------- */}
-        {/* <BusinessDevelopmentServices /> */}
-        {/* ---------------Billing Services ------------------------- */}
-        {/* <BillingServices /> */}
       </motion.div>
     </section>
   );

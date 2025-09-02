@@ -80,7 +80,7 @@ const AnimatedBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute top-0 left-0 w-full h-[500px] z-[-1]"
+      className="absolute top-0 left-0 w-full h-[520px] z-[-1]"
     />
   );
 };

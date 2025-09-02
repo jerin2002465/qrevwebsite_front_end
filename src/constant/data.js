@@ -24,11 +24,6 @@ export const navItems = [
     label: "Services",
     href: "/services",
   },
-  // {
-  //   id: 3,
-  //   label: "Billing Services",
-  //   href: "/billing-services",
-  // },
 ];
 
 export const heroLogos = [
@@ -90,43 +85,40 @@ export const benefitItems = [
   },
 ];
 
+import OperationImg from "../images/services_images/operational.jpg";
+import AdmimniImg from "../images/services_images/admini.jpg";
+import SalesImg from "../images/services_images/sales.jpg";
+import RevenueImg from "../images/services_images/revenue.jpg";
+import SoftwareImg from "../images/services_images/software.jpg";
+
 export const coursesSecItems = [
   {
     id: 1,
-    img: "/images/course-img-2.png",
+    img: OperationImg,
     title: "Mobile App Development",
-    text: "A business transformation that involves aligning organizational structures, operations and culture with your organization’s mission, vision, strategy and values. QREV Business Solutions supports you at all levels.",
+    text: "QREV Business Solutions drives business transformation by aligning structures, operations, and culture with your mission and strategy. We support you at every level to unlock lasting growth",
     instructor: "Operational Efficiency Boosting",
     tags: [{ tag: "8 Weeks" }, { tag: "Intermediate" }],
   },
   {
     id: 2,
-    img: "/images/course-img-3.png",
+    img: AdmimniImg,
     title: "Front-End Web Development",
-    text: "Clearly defining processes, managing them well and adjusting them systematically leads to sustainable performance improvement. QREV Business Solutions guides you and provides training.",
+    text: "Streamline your operations with our expert administrative services. QREV Business Solutions ensures efficiency, accuracy, and hassle-free management.",
     instructor: "Administrative Services",
     tags: [{ tag: "10 Weeks" }, { tag: "Intermediate" }],
   },
-  // {
-  //   id: 3,
-  //   img: "/images/course-img-1.png",
-  //   title: "Web Design Fundamentals",
-  //   text: "Transform your sales and business development with QREV Business Solutions. Align your organization, optimize operations, and foster a winning culture.",
-  //   instructor: "Sales & Business Development",
-  //   tags: [{ tag: "4 Weeks" }, { tag: "Beginner" }],
-  // },
 ];
 
 /*-------------------------Services Items-----------------------------------*/
-import rcmImage1 from "../../public/images/course-img-1.png";
 
 export const rcmServices = [
   {
     id: 1,
     title: "Revenue Cycle Management Services",
-    img: rcmImage1,
+    img: RevenueImg,
     description:
-      "Manage your administrative tasks, minimize errors, and improve your bottom line with our proficient healthcare revenue cycle management services.",
+      "Maximize cash flow and minimize delays with our end-to-end Revenue Cycle Management services. QREV Business Solutions ensures accuracy, compliance, and faster reimbursements.",
   },
 ];
 
@@ -187,9 +179,9 @@ export const softwarebusiness = [
   {
     id: 2,
     title: "Sales & Business Development",
-    img: rcmImage1,
+    img: SalesImg,
     description:
-      "Sales & Business Development drive business growth by building relationships, exploring new opportunities, and closing profitable deals",
+      "Accelerate growth with our sales and business development expertise. QREV Business Solutions helps you capture opportunities, expand markets, and boost revenue.",
   },
 ];
 
@@ -243,9 +235,9 @@ export const softwareSolutions = [
   {
     id: 3,
     title: "Software Solutions",
-    img: rcmImage1,
+    img: SoftwareImg,
     description:
-      "Software Solutions simplify complex business challenges through innovative technology and tailored applications.",
+      "Empower your business with innovative, scalable, and tailor-made software solutions. QREV Business Solutions turns ideas into intelligent digital products that drive results.",
   },
 ];
 

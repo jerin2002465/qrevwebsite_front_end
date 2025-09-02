@@ -83,8 +83,8 @@ const Contact = () => {
             className="max-w-md mx-auto bg-white  rounded-2xl shadow-[0px_0px_4px_rgba(0,0,0,0.4)] p-8 space-y-6"
           >
             <h2 className="text-2xl font-bold  text-center">Contact Us</h2>
-            <p className="text-gray-500 text-center text-sm mb-6">
-              Fill out the form below and we’ll get back to you soon.
+            <p className="text-gray-500 font-bold text-center text-sm mb-6">
+              Fill in the Form, we’ll fill the Gaps
             </p>
 
             {/* Name */}

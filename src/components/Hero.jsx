@@ -52,12 +52,6 @@ const Hero = () => {
                 className="flex items-center   p-3.5 justify-center gap-2.5 max-w-max mx-auto flex-wrap text-center"
               >
                 <span className="bg-white px-3 py-3 rounded-[8px]">
-                  {/* <img
-                    src="/images/shape-2.png"
-                    alt="shape"
-                    width={48}
-                    height={48}
-                  /> */}
                   <IoFlash className="text-2xl" />
                 </span>
 
@@ -94,7 +88,7 @@ const Hero = () => {
 
           <motion.figure
             // variants={fadeIn}
-            className="mt-10 md:mt-14 lg:mt-[50px] max-w-[920px] w-full h-[500px] shadow-lg mx-auto overflow-hidden relative rounded-xl"
+            className="mt-20 md:mt-14 lg:mt-52 max-w-[920px] w-full h-[500px] shadow-lg mx-auto overflow-hidden relative rounded-xl"
           >
             {loading ? (
               <VideoLoader />

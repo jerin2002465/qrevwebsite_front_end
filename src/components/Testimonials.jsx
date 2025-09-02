@@ -30,14 +30,17 @@ const Testimonials = () => {
             <h2 className="text-[#2A998D] text-2xl md:text-4xl font-extrabold">
               Our Client Reviews
             </h2>
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-              We take pride in the trust our clients place in us. Their feedback
-              reflects our commitment to quality, reliability, and long-lasting
-              partnerships. Here’s what some of our valued clients have to say
-              about working with us.
-            </p>
           </div>
         </div>
+        <motion.p
+          variants={fadeInUp}
+          className="text-center text-2xl md:text-xl font-medium mt-4 max-w-1xl mx-auto leading-relaxed"
+        >
+          The trust our clients place in us is our greatest badge of honor.
+          Their powerful words stand as a testament to our uncompromising
+          quality, rock-solid reliability, and partnerships that go beyond
+          business. Here’s what they proudly share about their journey with us
+        </motion.p>
 
         {/* <motion.div variants={fadeIn}>
           <Swiper
@@ -99,7 +102,7 @@ const Testimonials = () => {
           </Swiper>
         </motion.div> */}
 
-        <motion.div variants={fadeIn}>
+        <motion.div>
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={30}
@@ -142,7 +145,7 @@ const Testimonials = () => {
                   <ClientReviewLoader />
                 ) : (
                   <>
-                    <p className="text-[15px] h-[90px] flex-grow">
+                    <p className="text-[15px] h-[100px] flex-grow">
                       {item.client_description}
                     </p>
                     <div className="flex items-center justify-between border-t border-t-green-90 pt-4 flex-wrap gap-2">
@@ -160,7 +163,7 @@ const Testimonials = () => {
           variants={fadeInUp}
           className="flex items-center justify-center mt-10 gap-5"
         >
-          <button className="h-12 w-12 bg-[#2A998D] transition-colors flex items-center justify-center rounded-xl prev-btn disabled:opacity-50 disabled:cursor-not-allowed">
+          <button className="h-12 w-12 bg-[#2A998D]  transition-colors flex items-center justify-center rounded-xl prev-btn disabled:opacity-50 disabled:cursor-not-allowed">
             <RiArrowLeftLine size={20} className="text-white" />
           </button>
           <button className="h-12 w-12 bg-[#2A998D] transition-colors flex items-center justify-center rounded-xl next-btn disabled:opacity-50 disabled:cursor-not-allowed">
