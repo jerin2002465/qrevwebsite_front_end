@@ -107,7 +107,6 @@ const Hero = () => {
                   src={videoUrl}
                   className="w-full h-full object-cover rounded-xl"
                   preload="metadata"
-                  muted
                   playsInline
                 />
 
