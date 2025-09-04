@@ -94,9 +94,9 @@ const Hero = () => {
           >
             {loading ? (
               <VideoLoader />
-            ) : isPlaying && videoUrl ? (
+            ) : isPlaying && SampleVideos ? (
               <video
-                src={videoUrl}
+                src={SampleVideos}
                 controls
                 autoPlay
                 onEnded={() => setIsPlaying(false)} // back to play button when finished
