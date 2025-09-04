@@ -6,7 +6,7 @@ export const ContactContext = createContext();
 const ContactUseContext = ({ children }) => {
   const [userDetails, setUserDetails] = useState([]);
   const [loading, setLoading] = useState(false);
-  const baseUrl = "http://192.168.29.163:8000/api/contact-details";
+  const baseUrl = "http://66.179.191.153:8000/api/contact-details";
 
   // Send contact form data to backend
   const postUserDetails = async (formData) => {

@@ -4,7 +4,7 @@ import axios from "axios";
 export const VideoContext = createContext();
 
 const VideoUseContext = ({ children }) => {
-  const baseUrl = "http://192.168.29.163:8000/api/video";
+  const baseUrl = "http://66.179.191.153:8000/api/video";
   const [loading, setLoading] = useState(false);
   const [videos, setVideos] = useState([]);
 
