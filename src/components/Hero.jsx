@@ -12,6 +12,8 @@ import { VideoContext } from "../UseContexts/HomeScreenContexts/VideoUseContext"
 import { VideoLoader } from "../Loader/Loader";
 import { Link } from "react-router-dom";
 
+import SampleVideos from "../videos/video.mp4";
+
 const Hero = () => {
   const { loading, videos } = useContext(VideoContext);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -104,8 +106,8 @@ const Hero = () => {
               <div className="w-full h-full relative">
                 {/* 🔹 Video thumbnail (first frame or poster) */}
                 <video
-                  src={videoUrl}
-                  className="w-full h-full object-cover rounded-xl"
+                  // src={videoUrl}
+                  src={SampleVideos}
                   preload="metadata"
                   playsInline
                 />

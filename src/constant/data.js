@@ -301,8 +301,8 @@ export const softwareSolutionsDetails = [
 /*----------------------- Database Services --------------------------*/
 
 /*------------------------------Client Logo -----------------------------*/
-import Client1 from "../images/logo/logo.png";
-import Client2 from "../images/sponser/spo1.webp";
+import Client1 from "../images/client_logo/client1.jpeg";
+import Client2 from "../images/client_logo/client2.jpeg";
 import Client3 from "../images/sponser/spo2.webp";
 import Client4 from "../images/sponser/spo3.webp";
 
@@ -317,20 +317,12 @@ export const clientLogo = [
   },
   {
     id: 3,
-    image: Client3,
+    image: Client1,
   },
   {
     id: 4,
-    image: Client4,
+    image: Client2,
   },
-  // {
-  //   id: 5,
-  //   image: Client1,
-  // },
-  // {
-  //   id: 6,
-  //   image: Client1,
-  // },
 ];
 
 export const testimonialsItems = [
@@ -463,5 +455,37 @@ export const socialIcons = [
     id: 3,
     icon: RiInstagramFill,
     href: "https://www.instagram.com/qrevbusiness/",
+  },
+];
+
+export const footerAddress = [
+  {
+    id: 2,
+    email: "admin@qrevbusinesssolutions.com",
+    phone: "+1 630 473 4131",
+    address: "123, Main Street, Astoria, New York(NY), USA",
+    created_at: "2025-08-30T04:39:57.000Z",
+    updated_at: "2025-09-02T07:08:04.000Z",
+  },
+];
+
+import Img1 from "../images/founders/sir.jpeg";
+import Img2 from "../images/founders/mam.jpeg";
+
+// Founder data
+export const founder_image = [
+  {
+    id: 1,
+    name: "Abavanan Mani",
+    role: "Founder",
+    linkedin: "https://www.linkedin.com/in/abavanan-mani-bb672b57",
+    img: Img1,
+  },
+  {
+    id: 2,
+    name: "Bharathi",
+    role: "Executive Director",
+    linkedin: "https://www.linkedin.com/in/e-bharathi-a137b1165/",
+    img: Img2,
   },
 ];

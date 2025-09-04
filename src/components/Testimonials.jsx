@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Title from "./Title";
-import { testimonialsItems } from "../constant/data";
+
 import { RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -10,6 +10,7 @@ import { motion } from "motion/react";
 import { fadeIn, fadeInUp, staggerContainer } from "../motion/animations";
 import { ClientContext } from "../UseContexts/HomeScreenContexts/ClientReviewUseContext";
 import { ClientReviewLoader, VideoLoader } from "../Loader/Loader";
+import { testimonialsItems } from "../constant/data";
 
 const Testimonials = () => {
   const { loading, clients } = useContext(ClientContext);
@@ -132,7 +133,9 @@ const Testimonials = () => {
             }}
             className="mt-14 lg:mt-16"
           >
-            {(loading ? [...Array(4)] : clients).map((item, i) => (
+            {/* {(loading ? [...Array(4)] : clients).map((item, i) => ( */}
+
+            {(loading ? [...Array(4)] : testimonialsItems).map((item, i) => (
               <SwiperSlide
                 key={item?.id || i}
                 className="bg-[#EEFAF9]  border border-white-95 p-8 lg:p-10 rounded-[10px] 
@@ -143,10 +146,10 @@ const Testimonials = () => {
                 ) : (
                   <>
                     <p className="text-[15px] h-[100px] flex-grow">
-                      {item.client_description}
+                      {item.text}
                     </p>
                     <div className="flex items-center justify-between border-t border-t-green-90 pt-4 flex-wrap gap-2">
-                      <p className="font-medium">{item.client_name}</p>
+                      <p className="font-medium">{item.author}</p>
                     </div>
                   </>
                 )}

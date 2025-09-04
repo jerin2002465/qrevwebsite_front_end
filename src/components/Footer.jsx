@@ -15,6 +15,9 @@ import { MdOutlineMail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaRegAddressCard } from "react-icons/fa";
 import { FooterLoader } from "../Loader/Loader";
+
+import { footerAddress } from "../constant/data";
+
 const Footer = () => {
   const { addresses, loading } = useContext(FooterContext);
   return (
@@ -167,7 +170,7 @@ const Footer = () => {
               {loading ? (
                 <FooterLoader />
               ) : (
-                addresses.map((item) => (
+                footerAddress.map((item) => (
                   <div key={item.id} className="space-y-3 text-[15px]">
                     {/* Email */}
                     <a className="flex  items-center gap-3 hover:text-[#2A998D] hover:underline transition-colors">
