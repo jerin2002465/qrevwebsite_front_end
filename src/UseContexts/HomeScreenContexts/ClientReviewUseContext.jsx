@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 export const ClientContext = createContext();
 const ClientReviewUseContext = ({ children }) => {
-  const baseUrl = "http://66.179.191.153:8000/api/clients-reviews";
+  const baseUrl = "https://66.179.191.153:8000/api/clients-reviews";
   const [loading, setLoading] = useState(false);
   const [clients, setClients] = useState([]);
   // Fetch all clients
