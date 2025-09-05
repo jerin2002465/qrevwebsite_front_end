@@ -99,20 +99,20 @@ const Hero = () => {
                 src={videoUrl}
                 controls
                 autoPlay
-                onEnded={() => setIsPlaying(false)} // back to play button when finished
+                onEnded={() => setIsPlaying(false)}
                 className="w-full h-full object-cover rounded-xl"
               />
             ) : (
               <div className="w-full h-full relative">
-                {/* 🔹 Video thumbnail (first frame or poster) */}
-                <video src={videoUrl} preload="metadata" playsInline />
+                {/* 🔹 Video thumbnail */}
+                <video src={videoUrl} preload="metadata" playsInline muted />
 
                 {/* Play button overlay */}
                 <div
                   onClick={() => setIsPlaying(true)}
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 cursor-pointer"
                 >
-                  <span className="bg-[#2A998D]  h-16 w-16 flex justify-center items-center rounded-full animate-pulse shadow-lg">
+                  <span className="bg-[#2A998D] h-16 w-16 flex justify-center items-center rounded-full animate-pulse shadow-lg">
                     <RiPlayFill size={30} className="text-white" />
                   </span>
                 </div>
