@@ -8,7 +8,4 @@ export default defineConfig({
     host: "0.0.0.0", // Allow access from local IP
     port: 5173, // Optional: change if needed
   },
-  build: {
-    outDir: "dist", // default is dist, ensure Vercel deploys from here
-  },
 });
