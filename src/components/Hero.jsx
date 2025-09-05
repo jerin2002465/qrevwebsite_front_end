@@ -94,9 +94,9 @@ const Hero = () => {
           >
             {loading ? (
               <VideoLoader />
-            ) : isPlaying && SampleVideos ? (
+            ) : isPlaying && videoUrl ? (
               <video
-                src={SampleVideos}
+                src={videoUrl}
                 controls
                 autoPlay
                 onEnded={() => setIsPlaying(false)} // back to play button when finished
@@ -105,12 +105,7 @@ const Hero = () => {
             ) : (
               <div className="w-full h-full relative">
                 {/* 🔹 Video thumbnail (first frame or poster) */}
-                <video
-                  // src={videoUrl}
-                  src={SampleVideos}
-                  preload="metadata"
-                  playsInline
-                />
+                <video src={videoUrl} preload="metadata" playsInline />
 
                 {/* Play button overlay */}
                 <div

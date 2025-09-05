@@ -4,7 +4,7 @@ import axios from "axios";
 export const ClientContext = createContext();
 
 const ClientLogoUseContext = ({ children }) => {
-  const baseUrl = "http://66.179.191.153/:8000/api/sponser-image";
+  const baseUrl = "https://api.qrevbusinesssolutions.com/api/sponser-image";
   const [sponserLogo, setSponserLogo] = useState([]);
   const [clientLoading, setLoading] = useState(false);
 

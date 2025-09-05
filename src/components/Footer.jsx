@@ -170,7 +170,7 @@ const Footer = () => {
               {loading ? (
                 <FooterLoader />
               ) : (
-                footerAddress.map((item) => (
+                addresses.map((item) => (
                   <div key={item.id} className="space-y-3 text-[15px]">
                     {/* Email */}
                     <a className="flex  items-center gap-3 hover:text-[#2A998D] hover:underline transition-colors">

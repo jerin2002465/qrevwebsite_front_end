@@ -61,7 +61,37 @@ const About = () => {
                 ))}
               </>
             ) : (
-              founder_image.map((item) => (
+              // founder_image.map((item) => (
+              //   <div
+              //     key={item.id}
+              //     className="flex flex-col items-center p-10 px-5 rounded-[50px] shadow-[0px_0px_3px_rgba(0,0,0,0.5)] bg-white transition-transform duration-300 hover:scale-105"
+              //   >
+
+              //     <div className="relative w-[150px] h-[150px] mt-4">
+              //       <img
+              //         src={item.img}
+              //         alt={item.name}
+              //         className="w-full h-full object-cover rounded-full shadow-[0px_0px_2px_rgba(0,0,0,0.5)] border-transparent"
+              //       />
+              //     </div>
+
+              //     <a
+              //       href={item.linkedin}
+              //       target="_blank"
+              //       rel="noopener noreferrer"
+              //       className="pl-5"
+              //     >
+              //       <h2 className="flex items-center justify-center gap-2 text-theme-purple mt-6 text-[23px] font-semibold">
+              //         {item.name}{" "}
+              //         <FaLinkedin className="text-[20px] text-blue-600" />
+              //       </h2>
+              //       <p className="text-theme-purple text-center mt-6 text-[18px]">
+              //         {item.role}
+              //       </p>
+              //     </a>
+              //   </div>
+              // ))
+              data.map((item, index) => (
                 <div
                   key={item.id}
                   className="flex flex-col items-center p-10 px-5 rounded-[50px] shadow-[0px_0px_3px_rgba(0,0,0,0.5)] bg-white transition-transform duration-300 hover:scale-105"
@@ -69,63 +99,32 @@ const About = () => {
                   {/* Founder Image */}
                   <div className="relative w-[150px] h-[150px] mt-4">
                     <img
-                      src={item.img}
-                      alt={item.name}
+                      src={item.founder_image}
+                      alt={`Founder ${index + 1}`}
                       className="w-full h-full object-cover rounded-full shadow-[0px_0px_2px_rgba(0,0,0,0.5)] border-transparent"
                     />
                   </div>
 
-                  {/* Founder Details */}
                   <a
-                    href={item.linkedin}
+                    href={
+                      index === 0
+                        ? "https://www.linkedin.com/in/abavanan-mani-bb672b57"
+                        : "https://www.linkedin.com/in/e-bharathi-a137b1165/"
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
                     className="pl-5"
                   >
                     <h2 className="flex items-center justify-center gap-2 text-theme-purple mt-6 text-[23px] font-semibold">
-                      {item.name}{" "}
+                      {index === 0 ? "Abavanan Mani" : "Bharathi"}
                       <FaLinkedin className="text-[20px] text-blue-600" />
                     </h2>
                     <p className="text-theme-purple text-center mt-6 text-[18px]">
-                      {item.role}
+                      {index === 0 ? "Founder" : "Executive Director"}
                     </p>
                   </a>
                 </div>
               ))
-              // founder_image.map((item, index) => (
-              //   <div
-              //     key={item.id}
-              //     className="flex flex-col items-center p-10 px-5 rounded-[50px] shadow-[0px_0px_3px_rgba(0,0,0,0.5)] bg-white transition-transform duration-300 hover:scale-105"
-              //   >
-              //     {/* Founder Image */}
-              //     <div className="relative w-[150px] h-[150px] mt-4">
-              //       <img
-              //         src={item.founder_image}
-              //         alt={`Founder ${index + 1}`}
-              //         className="w-full h-full object-cover rounded-full shadow-[0px_0px_2px_rgba(0,0,0,0.5)] border-transparent"
-              //       />
-              //     </div>
-
-              //     <a
-              //       href={
-              //         index === 0
-              //           ? "https://www.linkedin.com/in/abavanan-mani-bb672b57"
-              //           : "https://www.linkedin.com/in/e-bharathi-a137b1165/"
-              //       }
-              //       target="_blank"
-              //       rel="noopener noreferrer"
-              //       className="pl-5"
-              //     >
-              //       <h2 className="flex items-center justify-center gap-2 text-theme-purple mt-6 text-[23px] font-semibold">
-              //         {index === 0 ? "Abavanan Mani" : "Bharathi"}
-              //         <FaLinkedin className="text-[20px] text-blue-600" />
-              //       </h2>
-              //       <p className="text-theme-purple text-center mt-6 text-[18px]">
-              //         {index === 0 ? "Founder" : "Executive Director"}
-              //       </p>
-              //     </a>
-              //   </div>
-              // ))
             )}
           </div>
 
@@ -146,11 +145,11 @@ const About = () => {
               </Marquee>
             ) : (
               <Marquee pauseOnHover={true} gradient={false} speed={50}>
-                {[...clientLogo, ...clientLogo, ...clientLogo].map(
+                {[...sponserLogo, ...sponserLogo, ...sponserLogo].map(
                   (logo, index) => (
                     <div key={index} className="mx-8 flex items-center">
                       <img
-                        src={logo.image}
+                        src={logo.sponser_logo}
                         alt={`sponsor-logo-${index}`}
                         className="h-36 w-36 object-contain"
                       />

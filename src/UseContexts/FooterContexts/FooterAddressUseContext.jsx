@@ -4,7 +4,7 @@ import axios from "axios";
 export const FooterContext = createContext();
 
 const FooterAddressUseContext = ({ children }) => {
-  const baseUrl = "https://66.179.191.153:8000/api/footer-address";
+  const baseUrl = "https://api.qrevbusinesssolutions.com/api/footer-address";
   const [addresses, setAddresses] = useState([]);
   const [loading, setLoading] = useState(false);
   // ✅ Fetch all addresses

@@ -6,7 +6,7 @@ export const ContactContext = createContext();
 const ContactUseContext = ({ children }) => {
   const [userDetails, setUserDetails] = useState([]);
   const [loading, setLoading] = useState(false);
-  const baseUrl = "https://66.179.191.153:8000/api/contact-details";
+  const baseUrl = "https://api.qrevbusinesssolutions.com/api/contact-details";
 
   // Send contact form data to backend
   const postUserDetails = async (formData) => {
