@@ -9,6 +9,7 @@ import ScrollTop from "./scrollTop/ScrollTop";
 import { ToastContainer } from "react-toastify";
 import ServiceDetaill from "./detailsPages/ServiceDetaill";
 import ScrollToTop from "./scrollTop/ScrollToTop";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
 
           {/* Contact Page  */}
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
         <ScrollTop />
