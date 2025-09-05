@@ -237,12 +237,12 @@ const Footer = () => {
                 <ul className="space-y-2.5 mt-4">
                   {item.links.map((link, index) => (
                     <li key={index}>
-                      <a
-                        href={link.href}
+                      <Link
+                        to={link.href}
                         className="hover:underline transition hover:text-[#2A998D]"
                       >
                         {link.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
