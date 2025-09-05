@@ -88,10 +88,7 @@ const Hero = () => {
 
           {/*------------------ Videos ----------------- */}
 
-          <motion.figure
-            // variants={fadeIn}
-            className="mt-20 md:mt-14 lg:mt-52 max-w-[920px] w-full h-[500px] shadow-lg mx-auto overflow-hidden relative rounded-xl"
-          >
+          <motion.figure className="mt-20 md:mt-14 lg:mt-52 max-w-[920px] w-full aspect-video shadow-lg mx-auto overflow-hidden relative rounded-xl">
             {loading ? (
               <VideoLoader />
             ) : isPlaying && videoUrl ? (
@@ -104,8 +101,14 @@ const Hero = () => {
               />
             ) : (
               <div className="w-full h-full relative">
-                {/* 🔹 Video thumbnail */}
-                <video src={videoUrl} preload="metadata" playsInline muted />
+                {/* Video thumbnail */}
+                <video
+                  src={videoUrl}
+                  preload="metadata"
+                  controls
+                  autoPlay
+                  className="w-full h-full object-cover"
+                />
 
                 {/* Play button overlay */}
                 <div
