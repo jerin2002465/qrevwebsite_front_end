@@ -24,6 +24,11 @@ export const navItems = [
     label: "Services",
     href: "/services",
   },
+  {
+    id: 4,
+    label: "Privacy Policy",
+    href: "/privacy-policy",
+  },
 ];
 
 export const heroLogos = [
@@ -295,6 +300,48 @@ export const softwareSolutionsDetails = [
     title: "Database Consulting Service",
     description:
       "Efficient management of customer profiles, contacts, and related documents. We also provide guidance on database solutions for member tracking, fee management, event coordination, and volunteer recruitment.",
+  },
+];
+
+/*-------------------HealthCare Services---------------*/
+export const healthcareServices = [
+  {
+    id: 4,
+    title: "All-in-One Growth Package for Healthcare Providers",
+    img: RevenueImg,
+    description:
+      "At QREV Business Solutions, we go beyond traditional service models by offering a fully integrated business growth package designed specifically for healthcare providers.",
+  },
+];
+
+export const healthcareServicesDetails = [
+  {
+    id: 4,
+    categoryId: 4,
+    title: "Revenue Cycle Management (RCM)",
+    description:
+      "Maximize cash flow and minimize delays with our end-to-end Revenue Cycle Management services. QREV Business Solutions ensures accuracy, compliance, and faster reimbursements.",
+  },
+  {
+    id: 5,
+    categoryId: 4,
+    title: "Web Development & Online Presence",
+    description:
+      "Build a powerful digital presence with our comprehensive web development services tailored to healthcare providers' needs.",
+  },
+  {
+    id: 6,
+    categoryId: 4,
+    title: "Software Solutions",
+    description:
+      "Empower your business with innovative, scalable, and tailor-made software solutions designed specifically for healthcare operations.",
+  },
+  {
+    id: 7,
+    categoryId: 4,
+    title: "Digital Marketing",
+    description:
+      "Grow your patient base with targeted digital marketing strategies that help healthcare providers reach and engage their ideal clients.",
   },
 ];
 

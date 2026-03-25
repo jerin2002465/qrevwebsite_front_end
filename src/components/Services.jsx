@@ -5,6 +5,7 @@ import {
   rcmServices,
   softwarebusiness,
   softwareSolutions,
+  healthcareServices,
 } from "../constant/data";
 //import motion
 import { motion } from "motion/react";
@@ -157,6 +158,36 @@ const Services = () => {
                 <p className="text-sm leading-relaxed flex-grow">{item.text}</p>
               </div>
             </motion.div>
+          ))}
+
+          {/* Healthcare Services */}
+          {healthcareServices.map((item) => (
+            <Link key={item.id} to={`/services/${item.id}`} className="flex">
+              <motion.div
+                key={item.id}
+                variants={fadeInUp}
+                className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full "
+              >
+                <div className="w-full  h-52">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* [#EEFAF9]  */}
+
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-[20px] text-center mb-4">{item.title}</h3>
+                  <p className="text-sm leading-relaxed flex-grow">
+                    {item.description}
+                  </p>
+                  <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white ">
+                    More Info
+                  </button>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </motion.div>
