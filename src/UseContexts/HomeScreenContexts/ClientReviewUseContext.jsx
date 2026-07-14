@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 export const ClientContext = createContext();
 const ClientReviewUseContext = ({ children }) => {
-  const baseUrl = "https://api.qrevbusinesssolutions.com/api/clients-reviews";
+  const baseUrl = `${import.meta.env.VITE_API_BASE_URL}/clients-reviews`;
   const [loading, setLoading] = useState(false);
   const [clients, setClients] = useState([]);
   // Fetch all clients

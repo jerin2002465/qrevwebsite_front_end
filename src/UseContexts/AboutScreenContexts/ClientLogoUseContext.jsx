@@ -4,7 +4,7 @@ import axios from "axios";
 export const ClientContext = createContext();
 
 const ClientLogoUseContext = ({ children }) => {
-  const baseUrl = "https://api.qrevbusinesssolutions.com/api/sponser-image";
+  const baseUrl = `${import.meta.env.VITE_API_BASE_URL}/sponser-image`;
   const [sponserLogo, setSponserLogo] = useState([]);
   const [clientLoading, setLoading] = useState(false);
 

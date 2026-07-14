@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { motion } from "motion/react";
 import Img1 from "../images/founders/sir.jpeg";
 import Img2 from "../images/founders/mam.jpeg";
+import DefaultUserImg from "../images/default/User.png";
 import { FaLinkedin } from "react-icons/fa";
 import { clientLogo } from "../constant/data";
 import Marquee from "react-fast-marquee";
@@ -99,7 +100,7 @@ const About = () => {
                   {/* Founder Image */}
                   <div className="relative w-[150px] h-[150px] mt-4">
                     <img
-                      src={item.founder_image}
+                      src={item.founder_image || DefaultUserImg}
                       alt={`Founder ${index + 1}`}
                       className="w-full h-full object-cover rounded-full shadow-[0px_0px_2px_rgba(0,0,0,0.5)] border-transparent"
                     />

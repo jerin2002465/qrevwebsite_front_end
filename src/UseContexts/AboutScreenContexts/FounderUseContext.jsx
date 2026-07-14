@@ -4,7 +4,7 @@ import axios from "axios";
 export const AboutFounderContext = createContext();
 const FounderUseContext = ({ children }) => {
   const baseUrl =
-    "https://api.qrevbusinesssolutions.com/api/about-founder-image";
+    `${import.meta.env.VITE_API_BASE_URL}/about-founder-image`;
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);

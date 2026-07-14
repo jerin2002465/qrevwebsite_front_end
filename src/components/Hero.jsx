@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { heroLogos } from "../constant/data";
-import { RiPlayFill } from "@remixicon/react";
 import Marquee from "react-fast-marquee";
 
 //import motion
@@ -16,9 +15,14 @@ import SampleVideos from "../videos/video.mp4";
 
 const Hero = () => {
   const { loading, videos } = useContext(VideoContext);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
-  const videoUrl = videos.length > 0 ? videos[0].video_path : null;
+  const videoUrl = videos.length > 0 ? videos[0].video_path : SampleVideos;
+
+  const handleVideoError = () => {
+    console.error("API video failed to load, using fallback");
+    setVideoError(true);
+  };
 
   return (
     <>
@@ -91,35 +95,16 @@ const Hero = () => {
           <motion.figure className="mt-20 md:mt-14 lg:mt-52 max-w-[920px] w-full aspect-video shadow-lg mx-auto overflow-hidden relative rounded-xl">
             {loading ? (
               <VideoLoader />
-            ) : isPlaying && videoUrl ? (
+            ) : (
               <video
-                src={videoUrl}
+                src={videoError ? SampleVideos : videoUrl}
                 controls
                 autoPlay
-                onEnded={() => setIsPlaying(false)}
+                muted
+                crossOrigin="anonymous"
+                onError={handleVideoError}
                 className="w-full h-full object-cover rounded-xl"
               />
-            ) : (
-              <div className="w-full h-full relative">
-                {/* Video thumbnail */}
-                <video
-                  src={videoUrl}
-                  preload="metadata"
-                  controls
-                  autoPlay
-                  className="w-full h-full object-cover"
-                />
-
-                {/* Play button overlay */}
-                <div
-                  onClick={() => setIsPlaying(true)}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 cursor-pointer"
-                >
-                  <span className="bg-[#2A998D] h-16 w-16 flex justify-center items-center rounded-full animate-pulse shadow-lg">
-                    <RiPlayFill size={30} className="text-white" />
-                  </span>
-                </div>
-              </div>
             )}
           </motion.figure>
 

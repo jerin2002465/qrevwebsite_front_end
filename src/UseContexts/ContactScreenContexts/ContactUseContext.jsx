@@ -6,7 +6,7 @@ export const ContactContext = createContext();
 const ContactUseContext = ({ children }) => {
   const [userDetails, setUserDetails] = useState([]);
   const [loading, setLoading] = useState(false);
-  const baseUrl = "https://api.qrevbusinesssolutions.com/api/contact-details";
+  const baseUrl = `${import.meta.env.VITE_API_BASE_URL}/contact-details`;
 
   // Send contact form data to backend
   const postUserDetails = async (formData) => {

@@ -4,7 +4,7 @@ import axios from "axios";
 export const VideoContext = createContext();
 
 const VideoUseContext = ({ children }) => {
-  const baseUrl = "https://api.qrevbusinesssolutions.com/api/video";
+  const baseUrl = `${import.meta.env.VITE_API_BASE_URL}/video`;
   const [loading, setLoading] = useState(false);
   const [videos, setVideos] = useState([]);
 
