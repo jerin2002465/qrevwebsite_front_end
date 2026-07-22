@@ -130,7 +130,7 @@ const ServiceDetaill = () => {
             </motion.h4>
 
             {/* Service Overview */}
-            {mainService.title === "All-in-One Growth Package for Healthcare Providers" ? (
+            {mainService.id === 7 ? (
               <motion.div
                 className="bg-gradient-to-r from-[#EEFAF9] to-white rounded-2xl p-8 md:p-12 mb-12 border-l-4 border-[#2A998D] shadow-lg"
               >
@@ -189,7 +189,7 @@ const ServiceDetaill = () => {
             {(subServices.length > 0 || relatedMainServices.length > 0) && (
               <motion.div variants={staggerContainer}>
                 <h3 className="text-[#2A998D] text-2xl md:text-3xl font-bold mb-8 text-center">
-                  {mainService.title === "All-in-One Growth Package for Healthcare Providers"
+                  {mainService.id === 7
                     ? "Our Comprehensive Services"
                     : "Service Details"}
                 </h3>
