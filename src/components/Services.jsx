@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  coursesSecItems,
-} from "../constant/data";
+import { coursesSecItems } from "../constant/data";
 //import motion
 import { motion } from "motion/react";
 
@@ -75,11 +73,10 @@ const Services = () => {
             <div className="col-span-full text-center py-16">
               <p className="text-gray-600 text-lg">Loading services...</p>
             </div>
-          ) : error || (dynamicServices.length === 0 && coursesSecItems.length === 0) ? (
+          ) : error ||
+            (dynamicServices.length === 0 && coursesSecItems.length === 0) ? (
             <div className="col-span-full">
-              <motion.div
-                className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden mx-auto max-w-md w-full py-16 px-6"
-              >
+              <motion.div className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden mx-auto max-w-md w-full py-16 px-6">
                 <div className="text-center">
                   <p className="text-2xl md:text-3xl font-bold text-[#2A998D] mb-2">
                     Coming Soon
@@ -113,9 +110,14 @@ const Services = () => {
                     <h3 className="text-[20px] text-center mb-4">
                       {coursesSecItems[0].instructor}
                     </h3>
-                    <p className="text-sm leading-relaxed flex-grow">{coursesSecItems[0].text}</p>
+                    <p className="text-sm leading-relaxed flex-grow">
+                      {coursesSecItems[0].text}
+                    </p>
                     {coursesSecItems[0].route && (
-                      <Link to={coursesSecItems[0].route} className="no-underline">
+                      <Link
+                        to={coursesSecItems[0].route}
+                        className="no-underline"
+                      >
                         <button className="w-full bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
                           More Info
                         </button>
@@ -126,32 +128,52 @@ const Services = () => {
               )}
 
               {/* 2. Revenue Cycle Management (dynamic id: 6) */}
-              {dynamicServices.find(s => s.id === 6) && (
+              {dynamicServices.find((s) => s.id === 6) && (
                 <Link key="dynamic-6" to="/services/6" className="flex">
                   <motion.div className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full">
                     <div className="w-full h-48">
-                      <img src={dynamicServices.find(s => s.id === 6).img} alt="RCM" className="w-full h-full object-cover" />
+                      <img
+                        src={dynamicServices.find((s) => s.id === 6).img}
+                        alt="RCM"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <div className="p-6 flex flex-col flex-grow">
-                      <h3 className="text-[20px] text-center mb-4">{dynamicServices.find(s => s.id === 6).title}</h3>
-                      <p className="text-sm leading-relaxed flex-grow">{dynamicServices.find(s => s.id === 6).description}</p>
-                      <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">More Info</button>
+                      <h3 className="text-[20px] text-center mb-4">
+                        {dynamicServices.find((s) => s.id === 6).title}
+                      </h3>
+                      <p className="text-sm leading-relaxed flex-grow">
+                        {dynamicServices.find((s) => s.id === 6).description}
+                      </p>
+                      <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
+                        More Info
+                      </button>
                     </div>
                   </motion.div>
                 </Link>
               )}
 
               {/* 3. Healthcare Growth Package (dynamic id: 7) */}
-              {dynamicServices.find(s => s.id === 7) && (
+              {dynamicServices.find((s) => s.id === 7) && (
                 <Link key="dynamic-7" to="/services/7" className="flex">
                   <motion.div className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full">
                     <div className="w-full h-48">
-                      <img src={dynamicServices.find(s => s.id === 7).img} alt="Healthcare" className="w-full h-full object-cover" />
+                      <img
+                        src={dynamicServices.find((s) => s.id === 7).img}
+                        alt="Healthcare"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <div className="p-6 flex flex-col flex-grow">
-                      <h3 className="text-[20px] text-center mb-4">{dynamicServices.find(s => s.id === 7).title}</h3>
-                      <p className="text-sm leading-relaxed flex-grow">{dynamicServices.find(s => s.id === 7).description}</p>
-                      <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">More Info</button>
+                      <h3 className="text-[20px] text-center mb-4">
+                        {dynamicServices.find((s) => s.id === 7).title}
+                      </h3>
+                      <p className="text-sm leading-relaxed flex-grow">
+                        {dynamicServices.find((s) => s.id === 7).description}
+                      </p>
+                      <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
+                        More Info
+                      </button>
                     </div>
                   </motion.div>
                 </Link>
@@ -174,9 +196,14 @@ const Services = () => {
                     <h3 className="text-[20px] text-center mb-4">
                       {coursesSecItems[1].instructor}
                     </h3>
-                    <p className="text-sm leading-relaxed flex-grow">{coursesSecItems[1].text}</p>
+                    <p className="text-sm leading-relaxed flex-grow">
+                      {coursesSecItems[1].text}
+                    </p>
                     {coursesSecItems[1].route && (
-                      <Link to={coursesSecItems[1].route} className="no-underline">
+                      <Link
+                        to={coursesSecItems[1].route}
+                        className="no-underline"
+                      >
                         <button className="w-full bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
                           More Info
                         </button>
@@ -187,36 +214,80 @@ const Services = () => {
               )}
 
               {/* 5. Sales & Business Development (dynamic id: 8) */}
-              {dynamicServices.find(s => s.id === 8) && (
+              {dynamicServices.find((s) => s.id === 8) && (
                 <Link key="dynamic-8" to="/services/8" className="flex">
                   <motion.div className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full">
                     <div className="w-full h-48">
-                      <img src={dynamicServices.find(s => s.id === 8).img} alt="Sales" className="w-full h-full object-cover" />
+                      <img
+                        src={dynamicServices.find((s) => s.id === 8).img}
+                        alt="Sales"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <div className="p-6 flex flex-col flex-grow">
-                      <h3 className="text-[20px] text-center mb-4">{dynamicServices.find(s => s.id === 8).title}</h3>
-                      <p className="text-sm leading-relaxed flex-grow">{dynamicServices.find(s => s.id === 8).description}</p>
-                      <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">More Info</button>
+                      <h3 className="text-[20px] text-center mb-4">
+                        {dynamicServices.find((s) => s.id === 8).title}
+                      </h3>
+                      <p className="text-sm leading-relaxed flex-grow">
+                        {dynamicServices.find((s) => s.id === 8).description}
+                      </p>
+                      <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
+                        More Info
+                      </button>
                     </div>
                   </motion.div>
                 </Link>
               )}
 
               {/* 6. Software Solutions (dynamic id: 9) */}
-              {dynamicServices.find(s => s.id === 9) && (
+              {dynamicServices.find((s) => s.id === 9) && (
                 <Link key="dynamic-9" to="/services/9" className="flex">
                   <motion.div className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full">
                     <div className="w-full h-48">
-                      <img src={dynamicServices.find(s => s.id === 9).img} alt="Software" className="w-full h-full object-cover" />
+                      <img
+                        src={dynamicServices.find((s) => s.id === 9).img}
+                        alt="Software"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <div className="p-6 flex flex-col flex-grow">
-                      <h3 className="text-[20px] text-center mb-4">{dynamicServices.find(s => s.id === 9).title}</h3>
-                      <p className="text-sm leading-relaxed flex-grow">{dynamicServices.find(s => s.id === 9).description}</p>
-                      <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">More Info</button>
+                      <h3 className="text-[20px] text-center mb-4">
+                        {dynamicServices.find((s) => s.id === 9).title}
+                      </h3>
+                      <p className="text-sm leading-relaxed flex-grow">
+                        {dynamicServices.find((s) => s.id === 9).description}
+                      </p>
+                      <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
+                        More Info
+                      </button>
                     </div>
                   </motion.div>
                 </Link>
               )}
+
+              {/* Additional Services - Show all remaining services dynamically */}
+              {dynamicServices
+                .filter((s) => ![6, 7, 8, 9].includes(s.id))
+                .map((item) => (
+                  <Link key={`dynamic-${item.id}`} to={`/services/${item.id}`} className="flex">
+                    <motion.div className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full">
+                      <div className="w-full h-48">
+                        <img
+                          src={item.img}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="p-6 flex flex-col flex-grow">
+                        <h3 className="text-[20px] text-center mb-4">{item.title}</h3>
+                        <p className="text-sm leading-relaxed flex-grow">{item.description}</p>
+                        <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
+                          More Info
+                        </button>
+                      </div>
+                    </motion.div>
+                  </Link>
+                ))}
             </>
           )}
         </div>
