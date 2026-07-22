@@ -101,8 +101,9 @@ export const coursesSecItems = [
     id: 1,
     img: AdmimniImg,
     text: "Streamline your operations with our expert administrative services. QREV Business Solutions ensures efficiency, accuracy, and hassle-free management.",
-    instructor: "Administrative Services",
+    instructor: "Bookkeeping & Accounting Services",
     tags: [{ tag: "10 Weeks" }, { tag: "Intermediate" }],
+    route: "/bookkeeping-accounting",
   },
   {
     id: 2,
@@ -110,6 +111,7 @@ export const coursesSecItems = [
     text: "QREV Business Solutions drives business transformation by aligning structures, operations, and culture with your mission and strategy. We support you at every level to unlock lasting growth",
     instructor: "Operational Efficiency Boosting",
     tags: [{ tag: "8 Weeks" }, { tag: "Intermediate" }],
+    route: null,
   },
 ];
 

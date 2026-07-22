@@ -18,9 +18,32 @@ const Contact = () => {
   });
 
   const [errors, setErrors] = useState({});
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.id]: e.target.value });
-    setErrors({ ...errors, [e.target.id]: "" });
+    let value = e.target.value;
+    let newErrors = { ...errors };
+
+    // For name field, only allow letters, spaces, and hyphens
+    if (e.target.id === "name") {
+      value = value.replace(/[^a-zA-Z\s-]/g, "");
+    }
+
+    // Real-time email validation
+    if (e.target.id === "email") {
+      if (value && !validateEmail(value)) {
+        newErrors.email = "Please enter a valid email";
+      } else {
+        newErrors.email = "";
+      }
+    }
+
+    setForm({ ...form, [e.target.id]: value });
+    setErrors(newErrors);
   };
 
   const handleSubmit = async (e) => {

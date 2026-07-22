@@ -11,6 +11,7 @@ import ServiceDetaill from "./detailsPages/ServiceDetaill";
 import ScrollToTop from "./scrollTop/ScrollToTop";
 import NotFoundPage from "./pages/NotFoundPage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import BookkeepingAccounting from "./pages/BookkeepingAccounting";
 
 const App = () => {
   return (
@@ -26,6 +27,8 @@ const App = () => {
           <Route path="/services/:id" element={<ServiceDetaill />} />
           {/* Service Detail Page */}
           <Route path="/service-detail/:id" element={<ServiceDetaill />} />
+          {/* Bookkeeping & Accounting Custom Page */}
+          <Route path="/bookkeeping-accounting" element={<BookkeepingAccounting />} />
 
           {/* Contact Page  */}
           <Route path="/contact" element={<Contact />} />

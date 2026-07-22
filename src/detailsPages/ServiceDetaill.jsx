@@ -1,52 +1,116 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import {
-  rcmServices,
-  rcmServicesDetails,
-  softwarebusiness,
-  softwarebusinessDetails,
-  softwareSolutions,
-  softwareSolutionsDetails,
-  healthcareServices,
-  healthcareServicesDetails,
-} from "../constant/data";
 import { motion } from "motion/react";
-import { fadeInUp, staggerContainer } from "../motion/animations";
+import { staggerContainer } from "../motion/animations";
 
 const ServiceDetaill = () => {
   const { id } = useParams();
-  const categoryId = parseInt(id);
+  const serviceId = parseInt(id);
+  const [mainService, setMainService] = useState(null);
+  const [subServices, setSubServices] = useState([]);
+  const [relatedMainServices, setRelatedMainServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Merge all main services
-  const allServices = [
-    ...rcmServices,
-    ...softwarebusiness,
-    ...softwareSolutions,
-    ...healthcareServices,
-  ];
+  useEffect(() => {
+    const fetchServiceDetails = async () => {
+      try {
+        setLoading(true);
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
-  // Find the main service (RCM or Business)
-  const mainService = allServices.find((item) => item.id === categoryId);
+        // Fetch main service by ID
+        const mainResponse = await fetch(`${baseUrl}/main-services/${serviceId}`);
+        if (!mainResponse.ok) {
+          throw new Error("Service not found");
+        }
+        const mainData = await mainResponse.json();
+        setMainService(mainData.data || mainData);
 
-  // Merge all sub-services
-  const allSubServices = [
-    ...rcmServicesDetails,
-    ...softwarebusinessDetails,
-    ...softwareSolutionsDetails,
-    ...healthcareServicesDetails,
-  ];
+        // Fetch service details for this category
+        const detailsResponse = await fetch(`${baseUrl}/service-details/category/${serviceId}`);
+        if (detailsResponse.ok) {
+          const detailsData = await detailsResponse.json();
+          const details = detailsData.data || detailsData || [];
+          setSubServices(details);
 
-  // Filter sub-services under this category
-  const subServices = allSubServices.filter(
-    (item) => item.categoryId === categoryId
-  );
+          // Fetch related main services
+          const relatedIds = [];
+          details.forEach((detail) => {
+            if (detail.related_services) {
+              const ids = Array.isArray(detail.related_services)
+                ? detail.related_services
+                : detail.related_services.split(',').map(id => parseInt(id.trim()));
+              relatedIds.push(...ids);
+            }
+          });
 
-  if (!mainService) {
-    return <p className="text-center mt-20 text-red-500">Service not found</p>;
+          // Remove duplicates
+          const uniqueRelatedIds = [...new Set(relatedIds)];
+
+          // Fetch each related main service
+          if (uniqueRelatedIds.length > 0) {
+            const relatedServices = [];
+            for (const id of uniqueRelatedIds) {
+              try {
+                const relatedResponse = await fetch(`${baseUrl}/main-services/${id}`);
+                if (relatedResponse.ok) {
+                  const relatedData = await relatedResponse.json();
+                  relatedServices.push(relatedData.data || relatedData);
+                }
+              } catch (err) {
+                console.error(`Error fetching related service ${id}:`, err);
+              }
+            }
+            setRelatedMainServices(relatedServices);
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching service details:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServiceDetails();
+  }, [serviceId]);
+
+  if (loading) {
+    return (
+      <section className="mt-10 pb-16">
+        <div className="container">
+          <p className="text-center text-gray-600 text-lg py-16">Loading service details...</p>
+        </div>
+      </section>
+    );
   }
 
-  // Check if this is healthcare services (id === 4)
-  const isHealthcareService = categoryId === 4;
+  if (error || !mainService) {
+    return (
+      <section className="mt-10 pb-16">
+        <div className="container">
+          <motion.div
+            className="bg-[#EEFAF9] rounded-2xl shadow-md flex flex-col overflow-hidden mx-auto max-w-2xl w-full py-20 px-6"
+          >
+            <div className="text-center">
+              <p className="text-3xl md:text-4xl font-bold text-[#2A998D] mb-4">
+                Coming Soon
+              </p>
+              <p className="text-gray-600 text-lg mb-8">
+                This service details page will be available soon
+              </p>
+              <Link
+                to="/services"
+                className="inline-block bg-[#2A998D] text-white px-6 py-3 rounded-lg hover:bg-[#1f6b63] transition"
+              >
+                Back to Services
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <>
@@ -60,16 +124,14 @@ const ServiceDetaill = () => {
           >
             {/* Main Title */}
             <motion.h4
-              variants={fadeInUp}
               className="flex items-center justify-center gap-2 text-[#2A998D] font-extrabold text-3xl md:text-4xl mb-8 text-center"
             >
               {mainService.title}
             </motion.h4>
 
-            {/* Healthcare Services - Overview Section */}
-            {isHealthcareService && (
+            {/* Service Overview */}
+            {mainService.title === "All-in-One Growth Package for Healthcare Providers" ? (
               <motion.div
-                variants={fadeInUp}
                 className="bg-gradient-to-r from-[#EEFAF9] to-white rounded-2xl p-8 md:p-12 mb-12 border-l-4 border-[#2A998D] shadow-lg"
               >
                 <h3 className="text-[#2A998D] text-2xl md:text-3xl font-bold mb-6">
@@ -77,7 +139,7 @@ const ServiceDetaill = () => {
                 </h3>
 
                 <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
-                  Unlike fragmented services, our bundled model ensures that every aspect of your business works in sync. Your billing, technology, and marketing strategies are aligned toward one goal: sustainable growth and increased revenue.
+                  {mainService.short_description || mainService.description || "Service description not available"}
                 </p>
 
                 <div className="mb-8">
@@ -109,50 +171,78 @@ const ServiceDetaill = () => {
                     One Package. Total Business Transformation.
                   </h4>
                   <p className="text-gray-700 text-base leading-relaxed">
-                    We don't just provide services—we build a complete ecosystem that empowers healthcare providers to focus on what matters most: delivering exceptional patient care while we handle the rest.
+                    We don't just provide services—we build a complete ecosystem that empowers businesses to focus on what matters most: delivering exceptional results while we handle the rest.
                   </p>
                 </div>
               </motion.div>
+            ) : (
+              <motion.div
+                className="bg-gradient-to-r from-[#EEFAF9] to-white rounded-2xl p-8 md:p-12 mb-12 border-l-4 border-[#2A998D] shadow-lg"
+              >
+                <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                  {mainService.short_description || mainService.description || "Service description not available"}
+                </p>
+              </motion.div>
             )}
 
-            {/* Services Cards Section */}
-            <motion.div variants={staggerContainer}>
-              <h3 className="text-[#2A998D] text-2xl md:text-3xl font-bold mb-8 text-center">
-                {isHealthcareService ? "Our Comprehensive Services" : "Service Details"}
-              </h3>
+            {/* Service Details & Related Services Combined Section */}
+            {(subServices.length > 0 || relatedMainServices.length > 0) && (
+              <motion.div variants={staggerContainer}>
+                <h3 className="text-[#2A998D] text-2xl md:text-3xl font-bold mb-8 text-center">
+                  {mainService.title === "All-in-One Growth Package for Healthcare Providers"
+                    ? "Our Comprehensive Services"
+                    : "Service Details"}
+                </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {subServices.map((service) => (
-                  <Link
-                    key={service.id}
-                    to={
-                      isHealthcareService && service.id === 4
-                        ? `/services/1`
-                        : isHealthcareService && service.id === 6
-                        ? `/services/3`
-                        : `/services/${service.id}`
-                    }
-                    className="no-underline"
-                  >
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {/* Service Details Cards */}
+                  {subServices.map((service) => (
                     <div
-                      className="p-6 bg-[#EEFAF9] rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-[#2A998D]/10 cursor-pointer h-full flex flex-col"
+                      key={service.id}
+                      className="p-6 bg-[#EEFAF9] rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-[#2A998D]/10 h-full flex flex-col"
                     >
                       <h6 className="text-[#2A998D] text-lg font-semibold mb-3">
                         {service.title}
                       </h6>
                       <p className="text-sm text-gray-700 leading-relaxed flex-grow">
-                        {service.description}
+                        {service.short_description || service.description}
                       </p>
-                      {isHealthcareService && !(service.id === 5 || service.id === 7) && (
-                        <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
+                    </div>
+                  ))}
+
+                  {/* Related Main Services Cards */}
+                  {relatedMainServices.map((service) => (
+                    <div
+                      key={service.id}
+                      className="p-6 bg-[#EEFAF9] rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-[#2A998D]/10 h-full flex flex-col"
+                    >
+                      <h6 className="text-[#2A998D] text-lg font-semibold mb-3">
+                        {service.title}
+                      </h6>
+                      <p className="text-sm text-gray-700 leading-relaxed flex-grow">
+                        {service.short_description}
+                      </p>
+                      <Link
+                        to={`/services/${service.id}`}
+                        className="no-underline"
+                      >
+                        <button className="w-full bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
                           More Info
                         </button>
-                      )}
+                      </Link>
                     </div>
-                  </Link>
-                ))}
-              </div>
-            </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {subServices.length === 0 && relatedMainServices.length === 0 && (
+              <motion.div className="text-center py-12">
+                <p className="text-gray-600 text-lg">
+                  No service details available yet. Check back soon!
+                </p>
+              </motion.div>
+            )}
           </motion.div>
         </motion.div>
       </section>

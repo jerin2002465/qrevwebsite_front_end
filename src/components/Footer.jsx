@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   contactInfo,
   footerLists,
@@ -22,6 +22,29 @@ import footerLogo from "../images/logo/scode_logo.png";
 
 const Footer = () => {
   const { addresses, loading } = useContext(FooterContext);
+  const [services, setServices] = useState([]);
+  const [servicesLoading, setServicesLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        setServicesLoading(true);
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const response = await fetch(`${baseUrl}/main-services`);
+
+        if (response.ok) {
+          const data = await response.json();
+          setServices(data.data || data || []);
+        }
+      } catch (error) {
+        console.error("Error fetching services:", error);
+      } finally {
+        setServicesLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
   return (
     // <footer className="bg-white mt-10 py-8 pb-8">
     <footer className="bg-[#EEFAF9] mt-10 py-8 pb-8">
@@ -227,30 +250,26 @@ const Footer = () => {
             </div>
           ))}
 
-          {footerServicesContact.map((item, index) => (
-            <div key={index} className="space-y-3 text-center">
-              <Link
-                to={item.href}
-                className="text-lg hover:underline transition hover:text-[#2A998D] font-semibold"
-              >
-                {item.title}
-              </Link>
-              {item.links && (
-                <ul className="space-y-2.5 mt-4">
-                  {item.links.map((link, index) => (
-                    <li key={index}>
-                      <Link
-                        to={link.href}
-                        className="hover:underline transition hover:text-[#2A998D]"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
+          {/* Dynamic Services from API */}
+          <div className="space-y-3 text-center">
+            <h3 className="text-lg font-semibold">Services</h3>
+            {servicesLoading ? (
+              <FooterLoader />
+            ) : services.length > 0 ? (
+              <ul className="space-y-2.5 mt-4">
+                {services.map((service) => (
+                  <li key={service.id}>
+                    <Link
+                      to={`/services/${service.id}`}
+                      className="hover:underline transition hover:text-[#2A998D]"
+                    >
+                      {service.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
 
           {/* Social icons */}
           <motion.div variants={fadeInUp} className="text-center">

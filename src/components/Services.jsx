@@ -1,21 +1,50 @@
-import React from "react";
-import Title from "./Title";
+import React, { useState, useEffect } from "react";
 import {
   coursesSecItems,
-  rcmServices,
-  softwarebusiness,
-  softwareSolutions,
-  healthcareServices,
 } from "../constant/data";
 //import motion
 import { motion } from "motion/react";
-import { fadeInUp, staggerContainer } from "../motion/animations";
 
-import BusinessDevelopmentServices from "../pages/BusinessDevelopmentServices";
-import BillingServices from "./BillingServices";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Services = () => {
+  const [dynamicServices, setDynamicServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        setLoading(true);
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const response = await fetch(`${baseUrl}/main-services`);
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch services");
+        }
+
+        const data = await response.json();
+
+        // Map API response to match component structure
+        const mappedServices = (data.data || data).map((service) => ({
+          id: service.id,
+          title: service.title,
+          description: service.short_description,
+          img: service.image,
+        }));
+
+        setDynamicServices(mappedServices);
+      } catch (err) {
+        console.error("Error fetching services:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
   return (
     <section className="mt-5">
       <motion.div
@@ -40,155 +69,89 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Card wrapper */}
+        {/* All Services - Dynamic + Static Combined */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10">
-          {softwarebusiness.map((item) => (
-            <Link key={item.id} to={`/services/${item.id}`} className="flex">
+          {loading ? (
+            <div className="col-span-full text-center py-16">
+              <p className="text-gray-600 text-lg">Loading services...</p>
+            </div>
+          ) : error || dynamicServices.length === 0 ? (
+            <div className="col-span-full">
               <motion.div
-                key={item.id}
-                variants={fadeInUp}
-                className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full"
+                className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden mx-auto max-w-md w-full py-16 px-6"
               >
-                <div className="w-full h-48">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-[20px] text-center mb-4">{item.title}</h3>
-                  <p className="text-sm leading-relaxed flex-grow">
-                    {item.description}
+                <div className="text-center">
+                  <p className="text-2xl md:text-3xl font-bold text-[#2A998D] mb-2">
+                    Coming Soon
                   </p>
-                  <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
-                    More Info
-                  </button>
+                  <p className="text-gray-600 text-base">
+                    More services will be available soon
+                  </p>
                 </div>
               </motion.div>
-            </Link>
-          ))}
+            </div>
+          ) : (
+            <>
+              {/* Dynamic Services */}
+              {dynamicServices.map((item) => (
+                <Link key={item.id} to={`/services/${item.id}`} className="flex">
+                  <motion.div
+                    className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full"
+                  >
+                    <div className="w-full h-48">
+                      <img
+                        src={item.img}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
 
-          {/* Rcm Services  */}
-          {rcmServices.map((item) => (
-            <Link key={item.id} to={`/services/${item.id}`} className="flex">
-              <motion.div
-                key={item.id}
-                variants={fadeInUp}
-                className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full"
-              >
-                <div className="w-full h-48">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <h3 className="text-[20px] text-center mb-4">{item.title}</h3>
+                      <p className="text-sm leading-relaxed flex-grow">
+                        {item.description}
+                      </p>
+                      <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
+                        More Info
+                      </button>
+                    </div>
+                  </motion.div>
+                </Link>
+              ))}
 
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-[20px] text-center mb-4">{item.title}</h3>
-                  <p className="text-sm leading-relaxed flex-grow">
-                    {item.description}
-                  </p>
-                  <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
-                    More Info
-                  </button>
-                </div>
-              </motion.div>
-            </Link>
-          ))}
+              {/* Static Services */}
+              {coursesSecItems.map((item) => (
+                <motion.div
+                  key={item.id}
+                  className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden"
+                >
+                  {/* Image */}
+                  <div className="w-full h-48">
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-          {/* Software Solutions  */}
-          {softwareSolutions.map((item) => (
-            <Link key={item.id} to={`/services/${item.id}`} className="flex">
-              <motion.div
-                key={item.id}
-                variants={fadeInUp}
-                className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full "
-              >
-                <div className="w-full  h-52">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                {/* [#EEFAF9]  */}
-
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-[20px] text-center mb-4">{item.title}</h3>
-                  <p className="text-sm leading-relaxed flex-grow">
-                    {item.description}
-                  </p>
-                  <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white ">
-                    More Info
-                  </button>
-                </div>
-              </motion.div>
-            </Link>
-          ))}
-        </div>
-
-        {/*---------------------- Services Layouts ---------------------*/}
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10">
-          {coursesSecItems.map((item) => (
-            <motion.div
-              key={item.id}
-              variants={fadeInUp}
-              // className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden"
-
-              className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden"
-            >
-              {/* Image */}
-              <div className="w-full h-48">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-[20px] text-center mb-4">
-                  {item.instructor}
-                </h3>
-                <p className="text-sm leading-relaxed flex-grow">{item.text}</p>
-              </div>
-            </motion.div>
-          ))}
-
-          {/* Healthcare Services */}
-          {healthcareServices.map((item) => (
-            <Link key={item.id} to={`/services/${item.id}`} className="flex">
-              <motion.div
-                key={item.id}
-                variants={fadeInUp}
-                className="bg-[#EEFAF9] rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden w-full "
-              >
-                <div className="w-full  h-52">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                {/* [#EEFAF9]  */}
-
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-[20px] text-center mb-4">{item.title}</h3>
-                  <p className="text-sm leading-relaxed flex-grow">
-                    {item.description}
-                  </p>
-                  <button className="bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white ">
-                    More Info
-                  </button>
-                </div>
-              </motion.div>
-            </Link>
-          ))}
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h3 className="text-[20px] text-center mb-4">
+                      {item.instructor}
+                    </h3>
+                    <p className="text-sm leading-relaxed flex-grow">{item.text}</p>
+                    {item.route && (
+                      <Link to={item.route} className="no-underline">
+                        <button className="w-full bg-white text-black py-2 rounded-2xl border border-gray-200 mt-5 hover:bg-[#2A998D] hover:text-white">
+                          More Info
+                        </button>
+                      </Link>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </>
+          )}
         </div>
       </motion.div>
     </section>

@@ -81,3 +81,8 @@
 .navbar.active {
   @apply translate-y-0;
 }
+
+/* Swiper continuous autoplay */
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
