@@ -300,27 +300,6 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} Qrev Business Solutions. All rights
           reserved.
         </motion.p>
-
-        {/* Powered by section */}
-        <motion.div
-          variants={fadeInUp}
-          className="mt-12 pt-8 border-t border-gray-300 text-center"
-        >
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <img src={footerLogo} alt="" width={40} height={40} />
-          </div>
-          <p className="text-gray-700">
-            Powered by{" "}
-            <a
-              href="https://www.scodesoft.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs sm:text-sm text-blue-700 text-center font-bold cursor-pointer hover:underline"
-            >
-              Scode Software Solutions
-            </a>
-          </p>
-        </motion.div>
       </motion.div>
     </footer>
   );
