@@ -239,9 +239,9 @@ const IndustriesServe = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { name: "Monthly Financial Reports", icon: MdOutlineCalculate },
-              { name: "Profit & Loss Statement", icon: MdBarChart },
-              { name: "Balance Sheet", icon: MdAccountBalanceWallet },
-              { name: "Cash Flow Report", icon: MdAttachMoney },
+              { name: "Profit & Loss Statements", icon: MdBarChart },
+              { name: "Balance Sheets", icon: MdAccountBalanceWallet },
+              { name: "Cash Flow Reports", icon: MdAttachMoney },
               { name: "Reconciled Bank Statements", icon: MdCheckCircle },
               { name: "Tax-Ready Financial Records", icon: MdTrendingUp },
             ].map((item) => {

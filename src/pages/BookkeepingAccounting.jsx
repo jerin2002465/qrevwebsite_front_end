@@ -88,7 +88,7 @@ const BookkeepingAccounting = () => {
               PROBLEMS
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-              Are You Financial Records Always Up to Date ?
+              Are Your Financial Records Always Up to Date ?
             </h2>
             <p className="text-gray-600 text-base mb-8">
               Keeping your financial records organized can be overwhelming.
@@ -168,7 +168,7 @@ const BookkeepingAccounting = () => {
 
             <p className="text-gray-600 text-base max-w-2xl">
               Our <strong>accounting</strong> and{" "}
-              <strong>bookkeeping services</strong>are built around your
+              <strong>bookkeeping services</strong> are built around your
               business. At QREV, we blend professional expertise with modern
               technology and proven processes to deliver reliable financial
               information that supports confident decision-making.
