@@ -60,13 +60,13 @@ const WhyChooseUs = () => {
           </div>
 
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight max-w-3xl">
-            Why Choose Global FPO for Your Bookkeeping & Accounting Needs?
+            Why Choose QREV for Your Bookkeeping & Accounting Needs?
           </h2>
 
           <p className="text-gray-600 text-base max-w-2xl">
             As your business grows, managing finances in-house can become
-            increasingly complex. At Global FPO, we combine expert knowledge,
-            advanced technology, and a client-first approach to deliver reliable
+            increasingly complex. At QREV, we combine expert knowledge, advanced
+            technology, and a client-first approach to deliver reliable
             financial support that grows with your business.
           </p>
         </div>

@@ -39,7 +39,7 @@ const BookkeepingAccounting = () => {
               Financially Secure.
             </h1>
             <p className="text-gray-700 text-base mb-8 leading-relaxed">
-              Take the stress out of bookkeeping with Global FPO. Our reliable,
+              Take the stress out of bookkeeping with QREV. Our reliable,
               accurate, and scalable bookkeeping services help you stay focused,
               organized, make smarter decisions, and focus on growing your
               business with confidence.
@@ -169,9 +169,9 @@ const BookkeepingAccounting = () => {
             <p className="text-gray-600 text-base max-w-2xl">
               Our <strong>accounting</strong> and{" "}
               <strong>bookkeeping services</strong>are built around your
-              business. At Global FPO, we blend professional expertise with
-              modern technology and proven processes to deliver reliable
-              financial information that supports confident decision-making.
+              business. At QREV, we blend professional expertise with modern
+              technology and proven processes to deliver reliable financial
+              information that supports confident decision-making.
             </p>
           </div>
 

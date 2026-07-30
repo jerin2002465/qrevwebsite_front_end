@@ -62,7 +62,7 @@ const ReadyToSimplify = () => {
             </h2>
             <p className="mt-4 text-white/80 text-base md:text-xl leading-7 md:leading-8 max-w-xl">
               Accurate books are the foundation of every successful business.
-              With Global FPO, you get more than bookkeeping—you gain a trusted
+              With QREV, you get more than bookkeeping—you gain a trusted
               financial partner.
             </p>
 
